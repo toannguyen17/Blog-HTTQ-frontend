@@ -3,13 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ChangePasswordComponent} from './components/change-password/change-password.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { HomeComponent } from './components/home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ChangePasswordComponent,
-    ProfileComponent,
+    RegisterFormComponent,
+    LoginFormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
