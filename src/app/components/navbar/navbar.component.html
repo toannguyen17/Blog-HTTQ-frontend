@@ -1,0 +1,31 @@
+<nav class="main-header navbar navbar-expand navbar-white bg-dark " style="font-family: 'Palatino Linotype',sans-serif" >
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active mr-sm-3">
+                <a class="nav-link" routerLink="/home">
+                    <i class="fa fa-home fa-lg"></i>
+                    HTTQ &#160;&#160;&#160;&#160; |<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   style="color: whitesmoke">{{today <= 12 ? 'Good morning' : today <= 17 ? 'Good Afternoon' : today <= 21 ? ' Good evening' : 'Good night'}}</a>
+            </li>
+        </ul>
+        <div class="my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto" >
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="login" style="color: #eeeeee"><i class="fas fa-sign-in-alt fa-lg"></i > Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="register" style="color: #eeeeee"><i class="fas fa-user-plus fa-lg"></i> Get started</a>
+                </li>
+            </ul>
+            <!--            <ul class="navbar-nav mr-auto" >-->
+            <!--                <li class="nav-item">-->
+            <!--                    <a class="nav-link" routerLink="#   " ><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>-->
+            <!--                </li>-->
+            <!--            </ul>-->
+        </div>
+    </div>
+</nav>
