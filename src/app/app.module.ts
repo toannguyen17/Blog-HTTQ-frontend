@@ -13,6 +13,8 @@ import {JwtInterceptor}                      from './helpers/jwt.interceptor';
 import {appInitializer}                      from './helpers/app.initializer';
 import {ErrorInterceptor}                    from './helpers/error.interceptor';
 import {AuthenticationService}               from './services/authentication.service';
+import { PostComponent }                     from './components/post/post.component';
+import {ReactiveFormsModule}                 from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -20,12 +22,14 @@ import {AuthenticationService}               from './services/authentication.ser
         RegisterFormComponent,
         LoginFormComponent,
         HomeComponent,
-        NavbarComponent
+        NavbarComponent,
+        PostComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        ReactiveFormsModule
     ],
     providers   : [
         {provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthenticationService]},

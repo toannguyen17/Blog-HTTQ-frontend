@@ -11,7 +11,7 @@ import {ResAuth}                     from '@app/models/res-auth';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
-    private userSubject: BehaviorSubject<User>;
+    public userSubject: BehaviorSubject<User>;
     public _user: Observable<User>;
     public _token: string;
 
@@ -33,13 +33,7 @@ export class AuthenticationService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<ResBase<ResAuth>>(`${environment.API_URL}/auth/authenticate`, {email, password}, {withCredentials: true})
-        .pipe(map(auth => {
-            this._token = auth.data.token;
-            this.userSubject.next(auth.data.user)
-            this.startRefreshTokenTimer();
-            return this._token;
-        }));
+        return this.http.post<ResBase<ResAuth>>(`${environment.API_URL}/auth/authenticate`, {email, password}, {withCredentials: true});
     }
 
     logout() {
@@ -62,7 +56,7 @@ export class AuthenticationService {
 
     private refreshTokenTimeout;
 
-    private startRefreshTokenTimer() {
+    public startRefreshTokenTimer() {
         // parse json object from base64 encoded jwt token
         const jwtToken = JSON.parse(atob(this.token.split('.')[1]));
 
