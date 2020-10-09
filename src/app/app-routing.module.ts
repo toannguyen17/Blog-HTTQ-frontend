@@ -3,13 +3,12 @@ import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {HomeComponent}                           from './components/home/home.component';
 import {LoginFormComponent}                      from './components/login-form/login-form.component';
 import {RegisterFormComponent}                   from './components/register-form/register-form.component';
-import {GuestGuard}                              from '@app/helpers/guest.guard';
-import {PostComponent}                           from '@app/components/post/post.component';
-import {AuthGuard}                               from '@app/helpers/auth.guard';
+import {PostComponent}                           from './components/post/create/post.component';
+import {GuestGuard}                              from './helpers/guest.guard';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'post', component: PostComponent, canActivate: [AuthGuard]},
+    {path: 'post', component: PostComponent},
     {path: 'login', component: LoginFormComponent, canActivate: [GuestGuard]},
     {path: 'register', component: RegisterFormComponent, canActivate: [GuestGuard]},
 ];

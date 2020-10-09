@@ -13,8 +13,9 @@ import {JwtInterceptor}                      from './helpers/jwt.interceptor';
 import {appInitializer}                      from './helpers/app.initializer';
 import {ErrorInterceptor}                    from './helpers/error.interceptor';
 import {AuthenticationService}               from './services/authentication.service';
-import { PostComponent }                     from './components/post/post.component';
-import {ReactiveFormsModule}                 from '@angular/forms';
+import { PostComponent }                  from './components/post/create/post.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CKEditorModule}                   from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,9 @@ import {ReactiveFormsModule}                 from '@angular/forms';
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CKEditorModule,
+        FormsModule
     ],
     providers   : [
         {provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AuthenticationService]},
