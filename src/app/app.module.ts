@@ -13,9 +13,10 @@ import {JwtInterceptor}                      from './helpers/jwt.interceptor';
 import {appInitializer}                      from './helpers/app.initializer';
 import {ErrorInterceptor}                    from './helpers/error.interceptor';
 import {AuthenticationService}               from './services/authentication.service';
-import { PostComponent }                  from './components/post/create/post.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CKEditorModule}                   from '@ckeditor/ckeditor5-angular';
+import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
+import {CKEditorModule}    from '@ckeditor/ckeditor5-angular';
+import {PostViewComponent} from './components/post-view/post-view.component';
+import {PostFormComponent} from './components/post-form/post-form.component';
 
 @NgModule({
     declarations: [
@@ -24,14 +25,13 @@ import {CKEditorModule}                   from '@ckeditor/ckeditor5-angular';
         LoginFormComponent,
         HomeComponent,
         NavbarComponent,
-        PostComponent
+        PostViewComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        CKEditorModule,
         FormsModule
     ],
     providers   : [
