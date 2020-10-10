@@ -14,9 +14,7 @@ import {appInitializer}                      from './helpers/app.initializer';
 import {ErrorInterceptor}                    from './helpers/error.interceptor';
 import {AuthenticationService}               from './services/authentication.service';
 import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
-import {CKEditorModule}    from '@ckeditor/ckeditor5-angular';
-import {PostViewComponent} from './components/post-view/post-view.component';
-import {PostFormComponent} from './components/post-form/post-form.component';
+import {PostViewComponent}                   from './components/post-view/post-view.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +25,7 @@ import {PostFormComponent} from './components/post-form/post-form.component';
         NavbarComponent,
         PostViewComponent
     ],
-    imports: [
+    imports     : [
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
