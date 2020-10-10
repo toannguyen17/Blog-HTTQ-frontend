@@ -1,0 +1,34 @@
+<div class="container-xl">
+
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<label for="title">Title</label>
+					<input formControlName="title" type="text" class="form-control" id="title" placeholder="Title">
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label for="subtitle">Sub title</label>
+					<input formControlName="subTitle" type="text" class="form-control" id="subtitle"
+					       placeholder="Subtitle">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="privacy">Privacy</label>
+			<select class="form-control" id="privacy" formControlName="status">
+				<option value="PUBLIC">Public</option>
+				<option value="PRIVATE">Private</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="content">Content</label>
+			<ckeditor formControlName="content" id="content" [config]="config" [editor]="Editor" [data]="content"
+			          #ckEditorComponent></ckeditor>
+		</div>
+		<button type="submit">Create</button>
+	</form>
+</div>

@@ -9,7 +9,11 @@ export class PostService {
     constructor(private http: HttpClient) {
     }
 
-    save(form){
-        return this.http.post<ResBase<ResAuth>>(`${environment.API_URL}/post`, form);
+    public save(form){
+        return this.http.post<ResBase<any>>(`${environment.API_URL}/post`, form);
+    }
+
+    public findBySeo(seo: string){
+        return this.http.get<ResBase<any>>(`${environment.API_URL}/post/${seo}`);
     }
 }
