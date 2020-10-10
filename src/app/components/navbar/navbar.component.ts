@@ -9,10 +9,9 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 // tslint:disable-next-line:no-input-rename
 @Input('hour') today: number;
+  ngOnInit(): void {
+  }
 
 }
