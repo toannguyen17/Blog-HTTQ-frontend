@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PostFormComponent}      from '../post-form/post-form.component';
 import {PostService}            from '../../services/post.service';
 
+declare let $: any;
+
 @Component({
     selector     : '.app-edit',
     templateUrl  : './post-edit.component.html',
@@ -50,6 +52,11 @@ export class PostEditComponent implements OnInit, DoCheck {
                 status  : this.data.status,
                 content : this.data.content,
             });
+
+            this.data.tags.forEach((tag)=>{
+                console.log(tag.tag);
+                $(this.formComponent.inputTags.nativeElement).tagEditor('addTag', tag.tag);
+            })
 
             this.data = void 0;
         }
