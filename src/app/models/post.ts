@@ -1,3 +1,4 @@
+import {Tag} from './tag';
 
 export class Post {
     id?: number;
@@ -6,5 +7,5 @@ export class Post {
     content: string;
     contentPlainText: string;
     status: string;
-    tags?: string[];
+    tags?: Tag[];
 }

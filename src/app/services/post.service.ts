@@ -2,6 +2,7 @@
 import {HttpClient}  from '@angular/common/http';
 import {ResBase}     from '../models/res-base';
 import {environment} from '../../environments/environment';
+import {Post}        from '../models/post';
 
 @Injectable({providedIn: 'root'})
 export class PostService {
@@ -17,6 +18,6 @@ export class PostService {
     }
 
     public findBySeo(seo: string){
-        return this.http.get<ResBase<any>>(`${environment.API_URL}/post/${seo}`);
+        return this.http.get<ResBase<Post>>(`${environment.API_URL}/post/${seo}`);
     }
 }

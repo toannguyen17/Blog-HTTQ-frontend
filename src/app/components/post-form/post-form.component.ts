@@ -1,24 +1,29 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 
 import * as ClassicEditor                   from '@ckeditor/ckeditor5-build-balloon-block';
 import {CKEditorComponent}                  from '@ckeditor/ckeditor5-angular';
 import {Router}                             from '@angular/router';
 import {PostService}                        from '../../services/post.service';
-import {Post}                               from '../../models/post';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+declare let $: any;
 
 @Component({
     selector     : 'app-post',
     templateUrl  : './post-form.component.html',
     encapsulation: ViewEncapsulation.None
 })
-export class PostFormComponent implements OnInit {
+export class PostFormComponent implements OnInit, AfterViewInit {
     @ViewChild('ckEditorComponent')
     editorComponent: CKEditorComponent;
+
+    @ViewChild('tags')
+    inputTags: ElementRef;
 
     public Editor = ClassicEditor;
 
     public form: FormGroup;
+
 
     public seo: string;
 
@@ -44,6 +49,31 @@ export class PostFormComponent implements OnInit {
         });
     }
 
+    ngAfterViewInit(): void {
+        console.log('ngAfterViewInit', this.inputTags);
+        $(this.inputTags.nativeElement).tagEditor({
+            maxTags       : 10,
+            sortable      : false,
+            autocomplete  : {
+                delay   : 0,
+                position: {collision: 'flip'},
+                source  : []
+            },
+            forceLowercase: false,
+            placeholder   : 'Tags...',
+            onInput: function(e){
+                console.log(e.target.value);
+                console.log(this);
+            }.bind(this)
+        });
+
+        // get instance init tag
+        // $(this.inputTags.nativeElement).data('options')
+
+        // addTag
+        // $(this.inputTags.nativeElement).tagEditor('addTag', 'taggggggg');
+    }
+
     getEditor() {
         return this.editorComponent.editorInstance;
     }
@@ -53,13 +83,13 @@ export class PostFormComponent implements OnInit {
             let post = {
                 ...this.form.value,
                 contentPlainText: this.getEditor().sourceElement.textContent,
-                tags            : []
+                tags            : $(this.inputTags.nativeElement).tagEditor('getTags')[0].tags
             };
 
-            if(this.seo !== void 0){
+            if (this.seo !== void 0) {
                 post.seo = this.seo;
                 this.postService.update(post).subscribe();
-            }else{
+            } else {
                 this.postService.save(post).subscribe();
             }
 
