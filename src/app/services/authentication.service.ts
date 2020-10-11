@@ -3,11 +3,11 @@ import {Router}                      from '@angular/router';
 import {HttpClient}                  from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map}                         from 'rxjs/operators';
-import {environment}                 from '@environments/environment';
-import {User}                        from '@app/models/user';
-import {UserService}                 from '@app/services/user.service';
-import {ResBase}                     from '@app/models/res-base';
-import {ResAuth}                     from '@app/models/res-auth';
+import {User}                        from '../models/user';
+import {ResBase}                     from '../models/res-base';
+import {ResAuth}                     from '../models/res-auth';
+import {environment}                 from '../../environments/environment';
+import {UserService}                 from './user.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -32,8 +32,8 @@ export class AuthenticationService {
         return this._token;
     }
 
-    login(email: string, password: string) {
-        return this.http.post<ResBase<ResAuth>>(`${environment.API_URL}/auth/authenticate`, {email, password}, {withCredentials: true});
+    login(form) {
+        return this.http.post<ResBase<ResAuth>>(`${environment.API_URL}/auth/authenticate`, form, {withCredentials: true});
     }
 
     logout() {
@@ -44,11 +44,11 @@ export class AuthenticationService {
     }
 
     refreshToken() {
-        return this.http.post<any>(`${environment.API_URL}/auth/refresh`, {}, {withCredentials: true})
-        .pipe(map((token) => {
-            this._token = token;
+        return this.http.post<ResBase<string>>(`${environment.API_URL}/auth/refresh`, {}, {withCredentials: true})
+        .pipe(map((response) => {
+            this._token = response.data;
             this.startRefreshTokenTimer();
-            return token;
+            return response;
         }));
     }
 
@@ -59,6 +59,8 @@ export class AuthenticationService {
     public startRefreshTokenTimer() {
         // parse json object from base64 encoded jwt token
         const jwtToken = JSON.parse(atob(this.token.split('.')[1]));
+
+        this.stopRefreshTokenTimer();
 
         // set a timeout to refresh the token a minute before it expires
         const expires            = new Date(jwtToken.exp * 1000);

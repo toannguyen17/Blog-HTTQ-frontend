@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators}   from '@angular/forms';
-import {AuthenticationService}                from '@app/services/authentication.service';
 import {Router}                               from '@angular/router';
+import {AuthenticationService}                from '../../services/authentication.service';
 
 @Component({
     selector     : 'app-login-form',
@@ -28,9 +28,7 @@ export class LoginFormComponent implements OnInit {
 
     onSubmit() {
         if (!this.form.invalid) {
-            const email    = this.form.value.email;
-            const password = this.form.value.password;
-            this.authentication.login(email, password).subscribe(
+            this.authentication.login(this.form.value).subscribe(
                 response => {
                     this.authentication._token = response.data.token;
                     this.authentication.userSubject.next(response.data.user)

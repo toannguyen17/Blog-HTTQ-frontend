@@ -1,29 +1,27 @@
 <div class="wrapper" style="font-family: 'Palatino Linotype',sans-serif">
-    <div class="inner" style="background-color:ghostwhite">
-        <div class="image-holder">
-            <img src="assets/static/image/register/customer-experience-blog.jpg" alt="">
-        </div>
-        <form action="">
-            <h3>Register</h3>
-            <input type="text" class="form-control" placeholder="First Name">
-            <input type="text" class="form-control" placeholder="Last Name">
-            <input type="text" class="form-control" placeholder="Email">
-            <div class="form-holder">
-                <select name="" id="aaa" class="form-control">
-                    <option value="" disabled selected>Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-                <input type="text" class="form-control" placeholder="Pass word">
-            <input type="text" class="form-control" placeholder="Confirm Pass word">
-            <button style="margin-top: 10px">Register
-                <i class="zmdi zmdi-long-arrow-right "></i>
-            </button>
-        </form>
-    </div>
+	<div class="inner" style="background-color:ghostwhite">
+		<div class="image-holder">
+			<img src="assets/static/image/register/customer-experience-blog.jpg" alt="">
+		</div>
+		<form [formGroup]="form" (ngSubmit)="onSubmit()">
+			<h3>Register</h3>
+			<input formControlName="firstName" type="text" name="firstName" class="form-control" placeholder="First Name">
+			<input formControlName="lastName" type="text" name="lastName" class="form-control" placeholder="Last Name">
+			<input formControlName="email" type="text" name="email" class="form-control" placeholder="Email">
+			<div class="form-holder">
+				<select formControlName="gender" name="gender" class="form-control" placeholder="Gender">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+					<option value="other">Other</option>
+				</select>
+			</div>
+			<input formControlName="password" type="text" name="password" class="form-control" placeholder="Password">
+			<input formControlName="confirmPassword" type="text" name="confirmPassword" class="form-control" placeholder="Confirm Password">
+			<button type="submit" class="mt-5">Register
+				<i class="zmdi zmdi-long-arrow-right "></i>
+			</button>
+		</form>
+	</div>
 </div>
 
-<script src="src/assets/static/js/jquery-3.3.1.min.js"></script>
 <script src="src/assets/static/js/main.js"></script>
