@@ -15,6 +15,7 @@ import {ErrorInterceptor}                    from './helpers/error.interceptor';
 import {AuthenticationService}               from './services/authentication.service';
 import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
 import {PostViewComponent}                   from './components/post-view/post-view.component';
+import { SeekComponent } from './components/seek/seek.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import {PostViewComponent}                   from './components/post-view/post-v
         LoginFormComponent,
         HomeComponent,
         NavbarComponent,
-        PostViewComponent
+        PostViewComponent,
+        SeekComponent
     ],
     imports     : [
         BrowserModule,
