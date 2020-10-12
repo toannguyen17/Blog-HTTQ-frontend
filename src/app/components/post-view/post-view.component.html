@@ -1,4 +1,8 @@
 <div class="container-xl mt-5 mb-5">
+	<div *ngIf="auth.isLogin()" class="text-right">
+		<a class="btn btn-success" [routerLink]="'/post/edit/' + seo">Edit</a>
+		<a class="btn btn-danger ml-3" [routerLink]="'/post/delete/' + seo">Delete</a>
+	</div>
 	<div [style.max-width.px]="800" class="m-auto post-content">
 		<h1 #title class="mb-3"></h1>
 		<h2 #subTitle class="mb-3 subtitle" *ngIf="showSubTitle"></h2>

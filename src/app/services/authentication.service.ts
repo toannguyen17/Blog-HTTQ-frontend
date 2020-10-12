@@ -7,7 +7,6 @@ import {User}                        from '../models/user';
 import {ResBase}                     from '../models/res-base';
 import {ResAuth}                     from '../models/res-auth';
 import {environment}                 from '../../environments/environment';
-import {UserService}                 from './user.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -17,11 +16,14 @@ export class AuthenticationService {
 
     constructor(
         private router: Router,
-        private http: HttpClient,
-        private userService: UserService
+        private http: HttpClient
     ) {
         this.userSubject = new BehaviorSubject<User>(null);
         this._user       = this.userSubject.asObservable();
+    }
+
+    public isLogin(){
+        return !!this._token;
     }
 
     public get user(): User {
@@ -40,7 +42,7 @@ export class AuthenticationService {
         this._token = null;
         this.stopRefreshTokenTimer();
         this.userSubject.next(null);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
     }
 
     refreshToken() {
