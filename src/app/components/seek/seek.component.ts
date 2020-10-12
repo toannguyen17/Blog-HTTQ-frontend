@@ -1,18 +1,19 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import { environment } from 'src/environments/environment';
+import {environment}                          from 'src/environments/environment';
 import {ISeek}                                from '../../interface/iseek';
 import {SeekService}                          from '../../service/seek.service';
 
 @Component({
-               selector: 'app-seek',
-               templateUrl: './seek.component.html',
-               styleUrls: ['./seek.component.scss'],
-               encapsulation: ViewEncapsulation.None
-           })
+    selector     : 'app-seek',
+    templateUrl  : './seek.component.html',
+    encapsulation: ViewEncapsulation.None
+})
 export class SeekComponent implements OnInit {
+    s: any;
+
     results: ISeek[] = [];
-    key: string = '';
-    showResult = false;
+    key: string      = '';
+    showResult       = false;
 
     constructor(private seekService: SeekService) {
     }
@@ -21,7 +22,10 @@ export class SeekComponent implements OnInit {
     }
 
     public inputFocusOut() {
-        this.showResult = false;
+        clearTimeout(this.s);
+        this.s = setTimeout(() => {
+            this.showResult = false;
+        }, 300);
     }
 
     public search(): void {
@@ -33,7 +37,7 @@ export class SeekComponent implements OnInit {
                     console.log(i);
                     switch (i.type) {
                         case 'POST':
-                            i.url = `/post/${i.referenceId}`;
+                            i.url = `/${i.referenceId}`;
                             break;
                         case 'USER':
                             i.url = `/user/${i.referenceId}`;

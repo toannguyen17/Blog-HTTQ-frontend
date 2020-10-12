@@ -40,17 +40,15 @@ export class PostFormComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-        console.log(this);
         this.form = this.formBuilder.group({
             title   : ['', [Validators.required]],
-            subTitle: ['', [Validators.required]],
+            subTitle: ['', []],
             status  : ['PUBLIC', [Validators.required]],
             content : ['', [Validators.required]],
         });
     }
 
     ngAfterViewInit(): void {
-        console.log('ngAfterViewInit', this.inputTags);
         $(this.inputTags.nativeElement).tagEditor({
             maxTags       : 10,
             sortable      : false,
@@ -79,10 +77,16 @@ export class PostFormComponent implements OnInit, AfterViewInit {
     }
 
     onSubmit() {
+        let thumbnail = null;
+        let img = this.getEditor().sourceElement.querySelector('img');
+        if (img !== null)
+            thumbnail = img.src;
+
         if (this.form.valid) {
             let post = {
                 ...this.form.value,
                 contentPlainText: this.getEditor().sourceElement.textContent,
+                thumbnail: thumbnail,
                 tags            : $(this.inputTags.nativeElement).tagEditor('getTags')[0].tags
             };
 

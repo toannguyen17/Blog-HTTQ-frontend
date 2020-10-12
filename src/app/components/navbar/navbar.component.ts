@@ -1,18 +1,20 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {AuthenticationService}                       from '../../services/authentication.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector     : 'app-navbar',
+    templateUrl  : './navbar.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+    @Input('hour')
+    today: number;
 
-  ngOnInit(): void {
-  }
-// tslint:disable-next-line:no-input-rename
-@Input('hour') today: number;
+    constructor(public auth: AuthenticationService) {
+    }
+
+    ngOnInit(): void {
+    }
 
 }

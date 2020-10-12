@@ -1,15 +1,10 @@
 <div style="position: relative">
-    <input class="form-control" type="text" [(ngModel)]="key" name="key" (input)="search()" (focusout)="inputFocusOut()" id="seek-input">
+    <input class="form-control m-0" type="text" [(ngModel)]="key" (input)="search()" (focusout)="inputFocusOut()" id="seek-input">
     <div *ngIf="showResult" style="background-color: white">
         <div class="seek-result" style="position: absolute; top: 50px; background-color: white;z-index: 999">
             <div *ngIf="results.length <= 0">Found no item match.</div>
-            <a *ngFor="let sr of results" style="border: lightseagreen solid 1px; background-color: white" [href]="sr.url">
-                <div *ngIf="sr.type == 'USER'">
-                  <span class="glyphicon glyphicon-user"></span> <div class="sr-type">{{sr.title}} | {{sr.description}}</div>
-                </div>
-                <div *ngIf="sr.type == 'POST'">
-                    <span class="glyphicon glyphicon-file"></span> <div class="sr-type">{{sr.title}} | {{sr.description}}</div>
-                </div>
+            <a *ngFor="let sr of results" style="border: lightseagreen solid 1px; background-color: white" [routerLink]="sr.url">
+                <div class="sr-type">{{sr.type}}</div>|<div class="sr-title">{{sr.title}}</div>|<div class="sr-des">{{sr.description}}</div>
             </a>
         </div>
     </div>

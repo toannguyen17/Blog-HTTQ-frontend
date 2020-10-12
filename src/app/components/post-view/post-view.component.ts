@@ -12,6 +12,7 @@ import {
 
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostService}            from '../../services/post.service';
+import {AuthenticationService}  from '../../services/authentication.service';
 
 @Component({
     selector     : '.post-view',
@@ -29,17 +30,17 @@ export class PostViewComponent implements OnInit, DoCheck {
     @ViewChild("content")
     content: ElementRef;
 
-
     post: any;
 
     public showSubTitle: boolean = false;
 
-    private seo: string;
+    public seo: string;
 
     constructor(
         private router: Router,
         private postService: PostService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        public auth: AuthenticationService
     ) {
     }
 
