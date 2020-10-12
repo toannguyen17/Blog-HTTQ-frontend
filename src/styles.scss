@@ -10,3 +10,19 @@
 body {
   font-size: 14px;
 }
+
+.seek{
+  a{
+    color: lightpink;
+  }
+  a:hover {
+    color: #17a2b8;
+    text-decoration: none;
+  }
+  li{
+    list-style: none;
+  }
+  li:hover{
+    background-color: lightblue;
+  }
+}
