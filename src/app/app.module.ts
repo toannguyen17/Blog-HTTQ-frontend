@@ -15,7 +15,8 @@ import {ErrorInterceptor}                    from './helpers/error.interceptor';
 import {AuthenticationService}               from './services/authentication.service';
 import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
 import {PostViewComponent}                   from './components/post-view/post-view.component';
-import { SeekComponent } from './components/seek/seek.component';
+import { SeekComponent }                     from './components/seek/seek.component';
+import {ChangePasswordComponent}             from './components/change-password/change-password.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { SeekComponent } from './components/seek/seek.component';
         HomeComponent,
         NavbarComponent,
         PostViewComponent,
-        SeekComponent
+        SeekComponent,
+        ChangePasswordComponent
     ],
     imports     : [
         BrowserModule,
