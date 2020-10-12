@@ -2,6 +2,6 @@ export interface ISeek {
     type?: string;
     title?: string;
     description?: string;
-    referenceId?: number;
+    referenceId?: string;
     url?: string;
 }

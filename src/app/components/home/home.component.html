@@ -29,7 +29,7 @@
 								<img [src]="post.thumbnail !== null ? post.thumbnail : '/assets/noimage.png'"
 								     [alt]="post.title"></div>
 							<div class="post-info mt-2">
-								<h5><a href="#">{{ post.title }}</a></h5>
+								<h5><a [routerLink]="'/' + post.seo">{{ post.title }}</a></h5>
 								<h6 class="date"><em>{{ post.createdAt | date:'EEEE, MMMM d, y' }}</em></h6>
 							</div>
 						</div>

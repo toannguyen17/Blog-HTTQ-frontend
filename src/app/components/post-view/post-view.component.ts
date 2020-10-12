@@ -1,5 +1,6 @@
 import {
-    AfterContentInit,
+    AfterContentChecked,
+    AfterContentInit, AfterViewChecked,
     AfterViewInit,
     Component,
     DoCheck,
@@ -45,8 +46,22 @@ export class PostViewComponent implements OnInit, DoCheck {
     }
 
     ngOnInit(): void {
-        this.seo = this.activatedRoute.snapshot.params.seo;
+        this.getContent();
         console.log("ngOnInit", this.subTitle);
+    }
+
+    ngDoCheck() {
+        if (this.seo != this.activatedRoute.snapshot.params.seo)
+            this.getContent();
+
+        // console.log('ngDoCheck', this);
+        if (this.subTitle !== void 0){
+            this.subTitle.nativeElement.innerText = this.post.subTitle;
+        }
+    }
+
+    getContent(){
+        this.seo = this.activatedRoute.snapshot.params.seo;
         this.postService.findBySeo(this.seo).subscribe(response => {
             this.post = response.data;
             this.title.nativeElement.innerText = this.post.title;
@@ -57,12 +72,13 @@ export class PostViewComponent implements OnInit, DoCheck {
                 this.showSubTitle = true;
             }
         });
-        console.log(this);
     }
 
-    ngDoCheck() {
-        if (this.subTitle !== void 0){
-            this.subTitle.nativeElement.innerText = this.post.subTitle;
+    deletePost(){
+        if(confirm("Delete Post ??!")){
+            this.postService.deleteBySeo(this.seo).subscribe(response => {
+                this.router.navigateByUrl('/');
+            });
         }
     }
 }
