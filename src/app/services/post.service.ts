@@ -20,4 +20,8 @@ export class PostService {
     public findBySeo(seo: string){
         return this.http.get<ResBase<Post>>(`${environment.API_URL}/post/${seo}`);
     }
+
+    public deleteBySeo(seo: string){
+        return this.http.delete<ResBase<Post>>(`${environment.API_URL}/post/${seo}`);
+    }
 }

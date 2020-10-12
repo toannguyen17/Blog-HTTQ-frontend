@@ -28,8 +28,9 @@ export class PostFormComponent implements OnInit, AfterViewInit {
     public seo: string;
 
     public config = {
-        toolbar: ['heading', '|', 'bold', 'italic', 'link', '|', 'bulletedList', 'numberedList', '|', 'indent', 'outdent', '|', 'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|', 'undo', 'redo'],
-        block  : ['heading', 'bulletedList', 'numberedList', '|', 'indent', 'outdent', '|', 'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|', 'undo', 'redo']
+        mediaEmbed: {previewsInData: true},
+        toolbar   : ['heading', '|', 'bold', 'italic', 'link', '|', 'bulletedList', 'numberedList', '|', 'indent', 'outdent', '|', 'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|', 'undo', 'redo'],
+        block     : ['heading', 'bulletedList', 'numberedList', '|', 'indent', 'outdent', '|', 'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|', 'undo', 'redo']
     };
 
     constructor(
@@ -59,7 +60,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
             },
             forceLowercase: false,
             placeholder   : 'Tags...',
-            onInput: function(e){
+            onInput       : function(e) {
                 console.log(e.target.value);
                 console.log(this);
             }.bind(this)
@@ -78,15 +79,16 @@ export class PostFormComponent implements OnInit, AfterViewInit {
 
     onSubmit() {
         let thumbnail = null;
-        let img = this.getEditor().sourceElement.querySelector('img');
-        if (img !== null)
+        let img       = this.getEditor().sourceElement.querySelector('img');
+        if (img !== null) {
             thumbnail = img.src;
+        }
 
         if (this.form.valid) {
             let post = {
                 ...this.form.value,
                 contentPlainText: this.getEditor().sourceElement.textContent,
-                thumbnail: thumbnail,
+                thumbnail       : thumbnail,
                 tags            : $(this.inputTags.nativeElement).tagEditor('getTags')[0].tags
             };
 

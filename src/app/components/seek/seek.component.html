@@ -3,7 +3,7 @@
     <div *ngIf="showResult" style="background-color: white">
         <div class="seek-result" style="position: absolute; top: 50px; background-color: white;z-index: 999">
             <div *ngIf="results.length <= 0">Found no item match.</div>
-            <a *ngFor="let sr of results" style="border: lightseagreen solid 1px; background-color: white" [routerLink]="sr.url">
+            <a *ngFor="let sr of results" style="border: lightseagreen solid 1px; background-color: white" [routerLink]="sr.referenceId">
                 <div class="sr-type">{{sr.type}}</div>|<div class="sr-title">{{sr.title}}</div>|<div class="sr-des">{{sr.description}}</div>
             </a>
         </div>
