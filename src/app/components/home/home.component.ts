@@ -1,15 +1,25 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {HomeService}                          from '../../services/home.service';
+import {ReViewPost}                           from '../../models/reViewPost';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  encapsulation: ViewEncapsulation.None
+    selector     : 'app-home',
+    templateUrl  : './home.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+    topTrend: ReViewPost[] = new Array<ReViewPost>();
+    lastPost: ReViewPost[] = new Array<ReViewPost>();
 
-  ngOnInit(): void {
-  }
+    constructor(private homeService: HomeService) {
+    }
+
+    ngOnInit(): void {
+        this.homeService.get().subscribe(response => {
+            this.topTrend = response.data.topTrend;
+            this.lastPost = response.data.lastPost;
+        });
+    }
 
 }
