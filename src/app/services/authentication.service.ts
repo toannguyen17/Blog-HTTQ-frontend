@@ -46,7 +46,7 @@ export class AuthenticationService {
     }
 
     refreshToken() {
-        return this.http.post<ResBase<string>>(`${environment.API_URL}/auth/refresh`, {}, {withCredentials: true})
+        return this.http.get<ResBase<string>>(`${environment.API_URL}/auth/refresh`)
         .pipe(map((response) => {
             this._token = response.data;
             this.startRefreshTokenTimer();
