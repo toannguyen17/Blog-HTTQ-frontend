@@ -4,7 +4,12 @@
         <div class="seek-result" style="position: absolute; top: 50px; background-color: white;z-index: 999">
             <div *ngIf="results.length <= 0">Found no item match.</div>
             <a *ngFor="let sr of results" style="border: lightseagreen solid 1px; background-color: white" [href]="sr.url">
-                <div class="sr-type">{{sr.type}}</div>|<div class="sr-title">{{sr.title}}</div>|<div class="sr-des">{{sr.description}}</div>
+                <div *ngIf="sr.type == 'USER'">
+                  <span class="glyphicon glyphicon-user"></span> <div class="sr-type">{{sr.title}} | {{sr.description}}</div>
+                </div>
+                <div *ngIf="sr.type == 'POST'">
+                    <span class="glyphicon glyphicon-file"></span> <div class="sr-type">{{sr.title}} | {{sr.description}}</div>
+                </div>
             </a>
         </div>
     </div>
