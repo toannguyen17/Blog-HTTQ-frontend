@@ -4,7 +4,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ChangePWRequestService} from '../../services/change-pwrequest.service';
-import {ChangePWRequest} from '../../interface/change-pwrequest';
+import {ChangePWRequest}        from '../../models/change-pwrequest';
 
 @Component({
     selector: 'app-change-password',
