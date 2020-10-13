@@ -48,6 +48,8 @@ export class SeekComponent implements OnInit {
                 //     }
                 // }
             });
+        }else {
+            this.showResult = false;
         }
     }
 
