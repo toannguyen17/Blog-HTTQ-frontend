@@ -14,6 +14,7 @@ import {
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostService}            from '../../services/post.service';
 import {AuthenticationService}  from '../../services/authentication.service';
+import {Tag}                    from '../../models/tag';
 
 @Component({
     selector     : '.post-view',
@@ -32,6 +33,8 @@ export class PostViewComponent implements OnInit, DoCheck {
     content: ElementRef;
 
     post: any;
+
+    tags: Tag[];
 
     public showSubTitle: boolean = false;
 
@@ -63,7 +66,9 @@ export class PostViewComponent implements OnInit, DoCheck {
     getContent(){
         this.seo = this.activatedRoute.snapshot.params.seo;
         this.postService.findBySeo(this.seo).subscribe(response => {
+            console.log(response);
             this.post = response.data;
+            this.tags = this.post.tags;
             this.title.nativeElement.innerText = this.post.title;
 
             this.content.nativeElement.innerHTML = this.post.content;

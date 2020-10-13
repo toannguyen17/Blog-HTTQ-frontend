@@ -6,6 +6,7 @@ import {RegisterFormComponent} from './components/register-form/register-form.co
 import {ProfileComponent} from './components/profile/profile.component';
 import {ChangePasswordComponent} from './components/change-password/change-password.component';
 import {GuestGuard}            from './helpers/guest.guard';
+import {GuestGuard}            from './helpers/guard/guest.guard';
 import {PostViewComponent}     from './components/post-view/post-view.component';
 
 const routes: Routes = [
