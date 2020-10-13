@@ -7,5 +7,6 @@ export class User {
     firstName: string;
     phone: string;
     address: null;
+    gender: string;
     roles: Array<UserRole>;
 }
