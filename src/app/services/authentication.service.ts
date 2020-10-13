@@ -7,7 +7,6 @@ import {User}                        from '../models/user';
 import {ResBase}                     from '../models/res-base';
 import {ResAuth}                     from '../models/res-auth';
 import {environment}                 from '../../environments/environment';
-import {ChangePWRequest} from '../models/change-pwrequest';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
