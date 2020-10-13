@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import {NgModule}           from '@angular/core';
+import {CommonModule}       from '@angular/common';
+import {UsersListComponent} from './users-list/users-list.component';
 
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
-export class AdminModule { }
+              declarations: [
+                  UsersListComponent
+              ],
+              imports: [
+                  CommonModule
+              ]
+          })
+export class AdminModule {
+}
