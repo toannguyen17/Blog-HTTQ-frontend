@@ -16,6 +16,8 @@ import {AuthenticationService}               from './services/authentication.ser
 import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
 import {PostViewComponent}                   from './components/post-view/post-view.component';
 import { SeekComponent }        from './components/seek/seek.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {ChangePasswordComponent} from './components/change-password/change-password.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +27,9 @@ import { SeekComponent }        from './components/seek/seek.component';
         HomeComponent,
         NavbarComponent,
         PostViewComponent,
-        SeekComponent
+        SeekComponent,
+        ProfileComponent,
+        ChangePasswordComponent
     ],
     imports     : [
         BrowserModule,

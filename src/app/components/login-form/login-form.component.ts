@@ -31,7 +31,7 @@ export class LoginFormComponent implements OnInit {
             this.authentication.login(this.form.value).subscribe(
                 response => {
                     this.authentication._token = response.data.token;
-                    this.authentication.userSubject.next(response.data.user)
+                    this.authentication.userSubject.next(response.data.user);
                     this.authentication.startRefreshTokenTimer();
                     this.router.navigateByUrl("/")
                 },

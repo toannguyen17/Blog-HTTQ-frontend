@@ -1,30 +1,40 @@
-import {NgModule}              from '@angular/core';
-import {Routes, RouterModule}  from '@angular/router';
-import {HomeComponent}         from './components/home/home.component';
-import {LoginFormComponent}    from './components/login-form/login-form.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {HomeComponent} from './components/home/home.component';
+import {LoginFormComponent} from './components/login-form/login-form.component';
 import {RegisterFormComponent} from './components/register-form/register-form.component';
-import {GuestGuard}            from './helpers/guest.guard';
-import {PostViewComponent}     from './components/post-view/post-view.component';
+import {GuestGuard} from './helpers/guest.guard';
+import {PostViewComponent} from './components/post-view/post-view.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {ChangePasswordComponent} from './components/change-password/change-password.component';
 
 const routes: Routes = [
     {
-        path     : '',
+        path: '',
         component: HomeComponent
     },
     {
-        path        : 'post',
+        path: 'post',
         loadChildren: () => import('./modules/form-post.module').then(m => m.FormPostModule)
     },
     {
-        path     : 'login',
+        path: 'login',
         component: LoginFormComponent, canActivate: [GuestGuard]
     },
     {
-        path     : 'register',
+        path: 'register',
         component: RegisterFormComponent, canActivate: [GuestGuard]
     },
     {
-        path     : ':seo',
+        path: 'profile',
+        component: ProfileComponent
+    },
+    {
+        path: 'editProfile',
+        component: ChangePasswordComponent
+    },
+    {
+        path: ':seo',
         component: PostViewComponent
     },
 ];

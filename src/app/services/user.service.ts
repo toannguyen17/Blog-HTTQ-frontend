@@ -4,6 +4,7 @@ import {ResBase}     from '../models/res-base';
 import {ResAuth}     from '../models/res-auth';
 import {environment} from '../../environments/environment';
 import {User}        from '../models/user';
+import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -20,5 +21,9 @@ export class UserService {
 
     getAll() {
         return this.http.get<ResBase<User[]>>(`${environment.API_URL}/users`);
+    }
+
+    updateUser(id: number, user: User) {
+        return this.http.put<ResBase<User>>(`${environment.API_URL}/info/updateProfile/${id}`, user)
     }
 }
