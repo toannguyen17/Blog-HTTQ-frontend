@@ -2,36 +2,40 @@
 import {Router}                      from '@angular/router';
 import {HttpClient}                  from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map}                         from 'rxjs/operators';
 import {User}                        from '../models/user';
 import {ResBase}                     from '../models/res-base';
 import {ResAuth}                     from '../models/res-auth';
 import {environment}                 from '../../environments/environment';
+import {UserService}                 from './user.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
     public userSubject: BehaviorSubject<User>;
     public _user: Observable<User>;
-    public _token: string;
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private http: HttpClient,
+        private userService: UserService
     ) {
         this.userSubject = new BehaviorSubject<User>(null);
         this._user       = this.userSubject.asObservable();
     }
 
-    public isLogin(){
-        return !!this._token;
+    public isLogin() {
+        return !!this.getToken();
     }
 
     public get user(): User {
         return this.userSubject.value;
     }
 
-    public get token(): string {
-        return this._token;
+    getToken() {
+        return window.sessionStorage.getItem("token");
+    }
+
+    setToken(token: string) {
+        window.sessionStorage.setItem("token", token);
     }
 
     login(form) {
@@ -39,19 +43,33 @@ export class AuthenticationService {
     }
 
     logout() {
-        this._token = null;
+        window.sessionStorage.removeItem("token");
         this.stopRefreshTokenTimer();
         this.userSubject.next(null);
         this.router.navigate(['/']);
     }
 
+    keepLogin() {
+        this.userService.getMe().subscribe(response => {
+            if (response.status == 0){
+                this.userSubject.next(response.data)
+            }
+            console.log(response)
+        },error => {
+            console.log(error)
+        });
+        this.refreshToken();
+
+    }
+
     refreshToken() {
-        return this.http.get<ResBase<string>>(`${environment.API_URL}/auth/refresh`)
-        .pipe(map((response) => {
-            this._token = response.data;
+        return this.http.get<ResBase<string>>(`${environment.API_URL}/auth/refresh`).subscribe(response => {
+            this.setToken(response.data);
             this.startRefreshTokenTimer();
-            return response;
-        }));
+            console.log('refreshToken', response);
+        }, error => {
+            console.log(error);
+        });
     }
 
     // helper methods
@@ -60,14 +78,15 @@ export class AuthenticationService {
 
     public startRefreshTokenTimer() {
         // parse json object from base64 encoded jwt token
-        const jwtToken = JSON.parse(atob(this.token.split('.')[1]));
+        let token = this.getToken();
+        const jwtToken = JSON.parse(atob(token.split('.')[1]));
 
         this.stopRefreshTokenTimer();
 
         // set a timeout to refresh the token a minute before it expires
         const expires            = new Date(jwtToken.exp * 1000);
         const timeout            = expires.getTime() - Date.now() - (60 * 1000);
-        this.refreshTokenTimeout = setTimeout(() => this.refreshToken().subscribe(), timeout);
+        this.refreshTokenTimeout = setTimeout(() => this.refreshToken(), timeout);
     }
 
     private stopRefreshTokenTimer() {

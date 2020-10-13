@@ -42,7 +42,7 @@ export class RegisterFormComponent implements OnInit {
         if (!this.form.invalid) {
             this.userService.signUp(this.form.value).subscribe(
                 response => {
-                    this.authentication._token = response.data.token;
+                    this.authentication.setToken(response.data.token);
                     this.authentication.userSubject.next(response.data.user)
                     this.authentication.startRefreshTokenTimer();
                     this.router.navigateByUrl("/")

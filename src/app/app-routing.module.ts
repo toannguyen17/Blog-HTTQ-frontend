@@ -3,7 +3,7 @@ import {Routes, RouterModule}  from '@angular/router';
 import {HomeComponent}         from './components/home/home.component';
 import {LoginFormComponent}    from './components/login-form/login-form.component';
 import {RegisterFormComponent} from './components/register-form/register-form.component';
-import {GuestGuard}            from './helpers/guest.guard';
+import {GuestGuard}            from './helpers/guard/guest.guard';
 import {PostViewComponent}     from './components/post-view/post-view.component';
 
 const routes: Routes = [

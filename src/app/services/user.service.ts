@@ -15,7 +15,7 @@ export class UserService {
     }
 
     getMe() {
-        return this.http.get<ResBase<User>>(`${environment.API_URL}/user/me`);
+        return this.http.get<ResBase<User>>(`${environment.API_URL}/user/me`, {withCredentials: true});
     }
 
     getAll() {
