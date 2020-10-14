@@ -1,10 +1,14 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DecimalPipe} from '@angular/common';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {RouterModule, Routes} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AdminComponent} from './components/admin/admin.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import {HttpClientModule} from '@angular/common/http';
+import {TableComponent} from './components/table/table.component';
+import {NgbdSortableHeader} from './directive/sortable.directive';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
     {
@@ -22,11 +26,16 @@ const routes: Routes = [
         AdminComponent,
         SidebarComponent,
         UserListComponent,
-    ],
+        TableComponent,
+        TableComponent,
+        NgbdSortableHeader],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
         ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule,
+        NgbModule
     ],
     exports: [RouterModule]
 })
