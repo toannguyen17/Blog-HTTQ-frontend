@@ -4,6 +4,8 @@ import {ResBase}     from '../models/res-base';
 import {ResAuth}     from '../models/res-auth';
 import {environment} from '../../environments/environment';
 import {User}        from '../models/user';
+import {PostFindByUser} from '../models/post-find-by-user';
+import {PostPageable} from '../models/post-pageable';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -23,6 +25,10 @@ export class UserService {
     }
 
     updateUser(id: number, user: User) {
-        return this.http.put<ResBase<User>>(`${environment.API_URL}/info/updateProfile/${id}`, user)
+        return this.http.put<ResBase<User>>(`${environment.API_URL}/info/updateProfile/${id}`, user);
+    }
+
+    findPost(form: PostFindByUser) {
+        return this.http.post<ResBase<PostPageable>>(`${environment.API_URL}/user/post/search`, form);
     }
 }
