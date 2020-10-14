@@ -10,11 +10,11 @@ export class PostService {
     }
 
     public save(form){
-        return this.http.post<ResBase<any>>(`${environment.API_URL}/post`, form);
+        return this.http.post<ResBase<any>>(`${environment.API_URL}/post`, form, {withCredentials: true});
     }
 
     public update(form){
-        return this.http.put<ResBase<any>>(`${environment.API_URL}/post`, form);
+        return this.http.put<ResBase<any>>(`${environment.API_URL}/post`, form, {withCredentials: true});
     }
 
     public findBySeo(seo: string){
@@ -22,6 +22,6 @@ export class PostService {
     }
 
     public deleteBySeo(seo: string){
-        return this.http.delete<ResBase<Post>>(`${environment.API_URL}/post/${seo}`);
+        return this.http.delete<ResBase<Post>>(`${environment.API_URL}/post/${seo}`, {withCredentials: true});
     }
 }

@@ -1,6 +1,10 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {UserProfile} from '../../interface/user-profile';
-import {ProfileService} from '../../service/profile.service';
+import {UserService} from '../../services/user.service';
+import {AuthenticationService} from '../../services/authentication.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {ChangePWRequestService} from '../../services/change-pwrequest.service';
+import {ChangePWRequest}        from '../../models/change-pwrequest';
 
 @Component({
     selector: 'app-change-password',
@@ -9,20 +13,52 @@ import {ProfileService} from '../../service/profile.service';
     encapsulation: ViewEncapsulation.None
 })
 export class ChangePasswordComponent implements OnInit {
-    userProfile: UserProfile[] = [];
+    form: FormGroup;
+    formChangePW: FormGroup;
 
-    constructor(private profileService: ProfileService) {
-      this.getAll();
+    constructor(private auth: AuthenticationService,
+                private userService: UserService,
+                private changePWRequestService: ChangePWRequestService,
+                private fromBuilder: FormBuilder,
+                private router: Router) {
     }
 
     ngOnInit(): void {
+        this.form = this.fromBuilder.group({
+            email: [this.auth.user.email],
+            firstName: [this.auth.user.firstName, [Validators.required]],
+            lastName: [this.auth.user.lastName, []],
+            phone: [this.auth.user.phone, []],
+            gender: [this.auth.user.gender, []],
+            address: [this.auth.user.address, []]
+        });
+        this.formChangePW = this.fromBuilder.group({
+            password: [''],
+            newPassword: [''],
+            confirmNewPassword: ['']
+        })
     }
 
-    getAll(): UserProfile[] {
-        this.profileService.showProfile().subscribe(p => {
-            this.userProfile = p;
-        });
-        return this.userProfile;
+    updateUser() {
+        if (this.form.valid) {
+            this.userService.updateUser(this.auth.user.id, this.form.value).subscribe(value => {
+                alert('Information changed successfully');
+                this.auth.userSubject.next(value.data);
+                this.router.navigate(['/profile']);
+                console.log(this.auth.user);
+            });
+        } else {
+            alert('Not information changed');
+        }
     }
+
+    changePassword() {
+        this.changePWRequestService.changePassword(this.formChangePW.value).subscribe(response => {
+            console.log(response);
+            this.router.navigate(['profile'])
+        });
+        console.log(this.formChangePW.value)
+    }
+
 
 }

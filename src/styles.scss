@@ -11,6 +11,12 @@ body {
   font-size: 14px;
 }
 
+.toasts {
+  position: fixed;
+  bottom: 18px;
+  right: 5px;
+}
+
 .seek {
   a {
     color: lightpink;
