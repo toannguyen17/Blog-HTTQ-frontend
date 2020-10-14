@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {RouterModule, Routes} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AdminComponent} from './components/admin/admin.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';

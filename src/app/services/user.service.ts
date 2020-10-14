@@ -4,6 +4,8 @@ import {ResBase}     from '../models/res-base';
 import {ResAuth}     from '../models/res-auth';
 import {environment} from '../../environments/environment';
 import {User}        from '../models/user';
+import {PostFindByUser} from '../models/post-find-by-user';
+import {PostPageable} from '../models/post-pageable';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
