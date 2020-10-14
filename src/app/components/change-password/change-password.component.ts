@@ -4,6 +4,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ChangePWRequestService} from '../../services/change-pwrequest.service';
+import {ChangePWRequest}        from '../../models/change-pwrequest';
 
 @Component({
     selector: 'app-change-password',
@@ -12,8 +13,8 @@ import {ChangePWRequestService} from '../../services/change-pwrequest.service';
     encapsulation: ViewEncapsulation.None
 })
 export class ChangePasswordComponent implements OnInit {
-    from: FormGroup;
-    // changePWRequest: ChangePWRequest = {};
+    form: FormGroup;
+    formChangePW: FormGroup;
 
     constructor(private auth: AuthenticationService,
                 private userService: UserService,
@@ -23,7 +24,7 @@ export class ChangePasswordComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.from = this.fromBuilder.group({
+        this.form = this.fromBuilder.group({
             email: [this.auth.user.email],
             firstName: [this.auth.user.firstName, [Validators.required]],
             lastName: [this.auth.user.lastName, []],
@@ -31,11 +32,16 @@ export class ChangePasswordComponent implements OnInit {
             gender: [this.auth.user.gender, []],
             address: [this.auth.user.address, []]
         });
+        this.formChangePW = this.fromBuilder.group({
+            password: [''],
+            newPassword: [''],
+            confirmNewPassword: ['']
+        })
     }
 
     updateUser() {
-        if (this.from.valid) {
-            this.userService.updateUser(this.auth.user.id, this.from.value).subscribe(value => {
+        if (this.form.valid) {
+            this.userService.updateUser(this.auth.user.id, this.form.value).subscribe(value => {
                 alert('Information changed successfully');
                 this.auth.userSubject.next(value.data);
                 this.router.navigate(['/profile']);
@@ -47,7 +53,11 @@ export class ChangePasswordComponent implements OnInit {
     }
 
     changePassword() {
-
+        this.changePWRequestService.changePassword(this.formChangePW.value).subscribe(response => {
+            console.log(response);
+            this.router.navigate(['profile'])
+        });
+        console.log(this.formChangePW.value)
     }
 
 

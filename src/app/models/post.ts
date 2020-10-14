@@ -1,7 +1,9 @@
-import {Tag} from './tag';
+import {Tag}      from './tag';
+import {PostAuth} from './post-auth';
 
 export class Post {
     id?: number;
+    auth?: PostAuth;
     title: string;
     subTitle?: string;
     content: string;

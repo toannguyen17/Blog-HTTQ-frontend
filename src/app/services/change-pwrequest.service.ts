@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient}      from '@angular/common/http';
 import {ChangePWRequest} from '../models/change-pwrequest';
-import {ResBase} from '../models/res-base';
+import {ResBase}         from '../models/res-base';
 import {environment} from '../../environments/environment';
 
 @Injectable({
