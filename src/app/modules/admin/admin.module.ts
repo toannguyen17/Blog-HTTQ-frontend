@@ -5,6 +5,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AdminComponent} from './components/admin/admin.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+
 
 const routes: Routes = [
     {
@@ -22,6 +25,9 @@ const routes: Routes = [
         AdminComponent,
         SidebarComponent,
         UserListComponent,
+        UpdateUserComponent,
+        UserDetailComponent,
+
     ],
     imports: [
         CommonModule,
