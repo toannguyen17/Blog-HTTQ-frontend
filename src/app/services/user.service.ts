@@ -1,4 +1,4 @@
-﻿import {Injectable}  from '@angular/core';
+import {Injectable}  from '@angular/core';
 import {HttpClient}  from '@angular/common/http';
 import {ResBase}     from '../models/res-base';
 import {ResAuth}     from '../models/res-auth';
@@ -23,6 +23,10 @@ export class UserService {
     }
 
     updateUser(id: number, user: User) {
-        return this.http.put<ResBase<User>>(`${environment.API_URL}/info/updateProfile/${id}`, user)
+        return this.http.put<ResBase<User>>(`${environment.API_URL}/info/updateProfile/${id}`, user);
+    }
+
+    findPost(form: PostFindByUser) {
+        return this.http.post<ResBase<PostPageable>>(`${environment.API_URL}/user/post/search`, form);
     }
 }

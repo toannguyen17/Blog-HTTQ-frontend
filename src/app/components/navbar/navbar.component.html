@@ -27,8 +27,8 @@
 				</li>
 			</ul>
 			<div class="dropdown ml-4" *ngIf="auth.isLogin()">
-				<div class="dropdown-toggle text-white" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Tài khoản
+				<div class="dropdown-toggle text-white text-capitalize" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ (auth.user != null ? auth.user.firstName : '') }} {{ (auth.user != null ? auth.user.lastName : '') }}
 				</div>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 					<a class="dropdown-item" [routerLink]="'/profile'">Trang cá nhân</a>

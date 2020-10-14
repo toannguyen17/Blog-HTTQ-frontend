@@ -25,3 +25,57 @@ label.lb_c {
     width: auto;
   }
 }
+
+
+// Profile
+.item-post.c1 {
+  padding-left: calc(14px + 141px);
+  min-height: 106px;
+  position: relative;
+}
+
+.item-post.c1 + .item-post.c1 {
+  margin-top: 30px;
+}
+
+.item-post.c1 .title {
+  font-size: 15px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.item-post.c1 .c-time {
+  color: #797979;
+}
+
+.item-post.c1 .thumb-wrapper {
+  width: 141px;
+  height: 106px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.item-post.c1 .thumb-wrapper .thumb {
+  background-position: center;
+  background-size: cover;
+  display: block;
+  margin: 0;
+  width: 100%;
+  transition: all 0.2s;
+  border-radius: 6px;
+  height: 0px;
+  padding-top: 75%;
+}
+
+@media (min-width: 768px) {
+  .item-post.c1 {
+    padding-left: calc(22px + 204px);
+    min-height: 153px;
+  }
+
+  .item-post.c1 .thumb-wrapper {
+    width: 204px;
+    height: 153px;
+  }
+}
