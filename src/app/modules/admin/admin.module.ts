@@ -1,10 +1,13 @@
 import {NgModule} from '@angular/core';
-import {CommonModule, DecimalPipe} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {RouterModule, Routes} from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {AdminComponent} from './components/admin/admin.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+
 import {HttpClientModule} from '@angular/common/http';
 import {TableComponent} from './components/table/table.component';
 import {NgbdSortableHeader} from './directive/sortable.directive';
@@ -26,7 +29,8 @@ const routes: Routes = [
         AdminComponent,
         SidebarComponent,
         UserListComponent,
-        TableComponent,
+        UpdateUserComponent,
+        UserDetailComponent,
         TableComponent,
         NgbdSortableHeader],
     imports: [
