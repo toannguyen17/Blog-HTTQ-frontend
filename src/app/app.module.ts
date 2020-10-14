@@ -18,6 +18,7 @@ import {ProfileComponent}                    from './components/profile/profile.
 import {ChangePasswordComponent}             from './components/change-password/change-password.component';
 import {NgbModule}                           from '@ng-bootstrap/ng-bootstrap';
 import {ToastContainerComponent}             from './components/toast/toast-container/toast-container.component';
+import {DecimalPipe} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -30,8 +31,7 @@ import {ToastContainerComponent}             from './components/toast/toast-cont
         SeekComponent,
         ProfileComponent,
         ChangePasswordComponent,
-        SeekComponent,
-        ToastContainerComponent
+        ToastContainerComponent,
     ],
     imports     : [
         BrowserModule,
@@ -39,7 +39,7 @@ import {ToastContainerComponent}             from './components/toast/toast-cont
         AppRoutingModule,
         ReactiveFormsModule,
         FormsModule,
-        NgbModule,
+        NgbModule
     ],
     providers   : [
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

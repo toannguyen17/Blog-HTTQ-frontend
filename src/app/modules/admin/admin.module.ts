@@ -8,6 +8,10 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
+import {HttpClientModule} from '@angular/common/http';
+import {TableComponent} from './components/table/table.component';
+import {NgbdSortableHeader} from './directive/sortable.directive';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
     {
@@ -28,12 +32,15 @@ const routes: Routes = [
         UserListComponent,
         UpdateUserComponent,
         UserDetailComponent,
-
-    ],
+        TableComponent,
+        NgbdSortableHeader],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
         ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule,
+        NgbModule
     ],
     exports: [RouterModule]
 })
