@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {environment}                          from 'src/environments/environment';
 import {ISeek}                                from '../../interface/iseek';
 import {SeekService}                          from '../../services/seek.service';
 import {Router}                               from '@angular/router';
