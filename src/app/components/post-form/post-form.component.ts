@@ -5,6 +5,7 @@ import {CKEditorComponent}                  from '@ckeditor/ckeditor5-angular';
 import {Router}                             from '@angular/router';
 import {PostService}                        from '../../services/post.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ToastService}                       from '../../services/toast.service';
 
 declare let $: any;
 
@@ -37,6 +38,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
         private router: Router,
         private postService: PostService,
         private formBuilder: FormBuilder,
+        private toast: ToastService
     ) {
     }
 
@@ -94,12 +96,29 @@ export class PostFormComponent implements OnInit, AfterViewInit {
 
             if (this.seo !== void 0) {
                 post.seo = this.seo;
-                this.postService.update(post).subscribe();
+                this.postService.update(post).subscribe(response => {
+                    if (response.status === 0) {
+                        this.toast.show(response.msg, {class: 'bg-success text-white', delay: 3000});
+                    } else {
+                        this.toast.show(response.msg, {class: 'bg-danger text-white', delay: 3000});
+                    }
+                }, error => {
+                    this.toast.show('Error!', {class: 'bg-danger text-white', delay: 3000});
+                });
             } else {
-                this.postService.save(post).subscribe();
+                this.postService.save(post).subscribe(response => {
+                    if (response.status === 0) {
+                        this.router.navigateByUrl('/' + response.data.seo);
+                        this.toast.show(response.msg, {class: 'bg-success text-white', delay: 3000});
+                    } else {
+                        this.toast.show(response.msg, {class: 'bg-danger text-white', delay: 3000});
+                    }
+                }, error => {
+                    this.toast.show('Error!', {class: 'bg-danger text-white', delay: 3000});
+                });
             }
-
-            console.log(post);
+        } else {
+            this.toast.show("Enter the required fields", {class: 'bg-danger text-white', delay: 3000});
         }
     }
 }

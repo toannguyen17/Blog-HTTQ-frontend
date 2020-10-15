@@ -3,6 +3,7 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {Router}                                              from '@angular/router';
 import {AuthenticationService}                               from '../../services/authentication.service';
 import {UserService}                                         from '../../services/user.service';
+import {ToastService}                                        from '../../services/toast.service';
 
 @Component({
     selector     : 'app-register-form',
@@ -16,7 +17,8 @@ export class RegisterFormComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private authentication: AuthenticationService,
-        private userService: UserService
+        private userService: UserService,
+        private toast: ToastService
     ) {
     }
 
@@ -39,20 +41,36 @@ export class RegisterFormComponent implements OnInit {
     }
 
     onSubmit() {
-        if (!this.form.invalid) {
+        if (this.form.valid) {
             this.userService.signUp(this.form.value).subscribe(
                 response => {
-                    this.authentication.setToken(response.data.token);
-                    this.authentication.userSubject.next(response.data.user)
-                    this.authentication.startRefreshTokenTimer();
-                    this.router.navigateByUrl("/")
-                    console.log(response);
+                    if (response.status == 0){
+                        this.authentication.setToken(response.data.token);
+                        this.authentication.userSubject.next(response.data.user);
+                        this.authentication.startRefreshTokenTimer();
+                        this.router.navigateByUrl('/');
+                        this.toast.show(response.msg, {
+                            class: 'bg-success text-white'
+                        });
+                    }else{
+                        console.log(response);
+                        this.toast.show(response.msg, {
+                            class: 'bg-danger text-white'
+                        });
+                    }
                 },
                 error => {
+                    this.toast.show('Erorr !!', {
+                        class: 'bg-danger text-white'
+                    });
                     console.error(error);
                 }
             );
+        }else{
+            this.toast.show('Enter the required fields', {
+                class: 'bg-danger text-white'
+            });
         }
-        console.log(this);
+        console.log(this.form.value);
     }
 }

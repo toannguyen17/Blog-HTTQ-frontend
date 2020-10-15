@@ -1,5 +1,6 @@
-import {Tag}      from './tag';
-import {PostAuth} from './post-auth';
+import {Tag}        from './tag';
+import {PostAuth}   from './post-auth';
+import {PostStatus} from './post-status';
 
 export class Post {
     id?: number;
@@ -8,6 +9,8 @@ export class Post {
     subTitle?: string;
     content: string;
     contentPlainText: string;
-    status: string;
+    status: PostStatus;
     tags?: Tag[];
+    createdAt: Date;
+    updatedAt: Date;
 }

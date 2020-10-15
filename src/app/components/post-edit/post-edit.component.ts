@@ -3,6 +3,9 @@ import {Component, DoCheck, OnInit, ViewChild, ViewEncapsulation} from '@angular
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostFormComponent}      from '../post-form/post-form.component';
 import {PostService}            from '../../services/post.service';
+import {AuthenticationService}  from '../../services/authentication.service';
+import {Post}                   from '../../models/post';
+import {UserRole}               from '../../models/user-role';
 
 declare let $: any;
 
@@ -17,11 +20,13 @@ export class PostEditComponent implements OnInit, DoCheck {
 
     private seo: string;
 
-    private data: any;
+    private data: Post;
 
     public renderForm: boolean = false;
+    public err403: boolean = false;
 
     constructor(
+        private auth: AuthenticationService,
         private router: Router,
         private postService: PostService,
         private activeRoute: ActivatedRoute
@@ -35,7 +40,16 @@ export class PostEditComponent implements OnInit, DoCheck {
                 console.log(response);
                 if (response.status === 0){
                     this.data = response.data;
-                    this.renderForm = true;
+
+                    let user = this.auth.user;
+                    if ((this.data.auth != null && this.data.auth.id == user.id) ||
+                        user.roles.filter(role => role == UserRole.ROLE_ADMIN).length > 0
+                    ) {
+                        this.renderForm = true;
+                    }else{
+                        this.err403 = true;
+                        this.renderForm = false;
+                    }
                 }
             });
         }

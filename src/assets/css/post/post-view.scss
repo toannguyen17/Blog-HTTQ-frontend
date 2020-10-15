@@ -1,17 +1,43 @@
+
+.post-content {
+  font-size: 16px;
+}
+
+.post-content h1 {
+  font-size: 2.1rem;
+}
+
 .post-content h2.subtitle {
   color: #797979;
   font-size: 1.5rem;
   font-weight: 400;
 }
 
+.post-content .avatar img {
+  width: 60px;
+  border-radius: 50%;
+  height: 60px;
+}
+
+
+.post-content .auth .name {
+}
+
+.post-content .auth .time {
+  color: #7b7f84;
+}
+
+
 .tags {
+  font-size: 13px;
+
   .tag-item {
     background: #ddd;
     text-decoration: none;
     border-radius: 13px;
     margin-left: 5px;
     color: #000;
-    padding: 8px 8px 8px 8px;
+    padding: 5px 8px;
   }
 }
 
