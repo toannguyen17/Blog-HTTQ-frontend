@@ -16,6 +16,10 @@ export class UserDetailService {
         return this.httpClient.get<ResBase<UserDetail[]>>(`${environment.API_URL}/admin/users`);
     }
 
+    getUserById(id:number): Observable<UserDetail> {
+        return  this.httpClient.get<UserDetail>(`${environment.API_URL}/admin/user/${id}`)
+    }
+
     constructor(private httpClient: HttpClient) {
     }
 }
