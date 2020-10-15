@@ -19,6 +19,7 @@ import {ChangePasswordComponent}             from './components/change-password/
 import {NgbModule}                           from '@ng-bootstrap/ng-bootstrap';
 import {ToastContainerComponent}             from './components/toast/toast-container/toast-container.component';
 import {DecimalPipe} from '@angular/common';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import {DecimalPipe} from '@angular/common';
         ProfileComponent,
         ChangePasswordComponent,
         ToastContainerComponent,
+        EditUserComponent,
     ],
     imports     : [
         BrowserModule,

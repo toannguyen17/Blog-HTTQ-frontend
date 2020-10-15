@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {TableComponent} from './components/table/table.component';
 import {NgbdSortableHeader} from './directive/sortable.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
     {
@@ -32,7 +33,8 @@ const routes: Routes = [
         UpdateUserComponent,
         UserDetailComponent,
         TableComponent,
-        NgbdSortableHeader],
+        NgbdSortableHeader,
+        EditUserComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

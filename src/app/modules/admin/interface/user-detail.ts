@@ -7,7 +7,6 @@ export interface UserDetail {
     birthday?: any;
     gender?: string;
     address?: string;
-    user_id?: number;
     avatar?: number;
     createdAt?: Date;
     updateAt?: Date;

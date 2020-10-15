@@ -17,7 +17,35 @@ export class UserListComponent implements OnInit {
         });
     }
 
+    blockUser(id) {
+        let user: UserDetail = {};
+        for (let u of this.users) {
+            if (u.id == id) {
+                user = u;
+                break;
+            }
+        }
+        if (confirm('You are going to block user: ' + user.firstName + ' ' + user.lastName + 'id: ' + user.id + '. Are you sure?')) {
+            this.userDetailService.blockUser(user).subscribe(rs => {
+                confirm(rs.msg);
+            });
+        }
+    }
 
+    deleteUser(id){
+        let user: UserDetail = {};
+        for (let u of this.users) {
+            if (u.id == id) {
+                user = u;
+                break;
+            }
+        }
+        if (confirm('You are going to delete user: ' + user.firstName + ' ' + user.lastName + 'id: ' + user.id + '. Are you sure?')) {
+            this.userDetailService.deleteUser(user).subscribe(rs => {
+                confirm(rs.msg);
+            });
+        }
+    }
     ngOnInit(): void {
     }
 
