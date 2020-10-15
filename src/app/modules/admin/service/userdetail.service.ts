@@ -11,6 +11,8 @@ import {Observable} from 'rxjs';
 })
 
 export class UserDetailService {
+    constructor(private httpClient: HttpClient) {
+    }
 
     getAllUsers(): Observable<ResBase<UserDetail[]>> {
         return this.httpClient.get<ResBase<UserDetail[]>>(`${environment.API_URL}/admin/users`);
@@ -20,6 +22,9 @@ export class UserDetailService {
         return  this.httpClient.get<UserDetail>(`${environment.API_URL}/admin/users/${id}`)
     }
 
-    constructor(private httpClient: HttpClient) {
+    updateUser(userDetail: UserDetail): Observable<UserDetail> {
+        return this.httpClient.put<UserDetail>(`${environment.API_URL}/admin/user`, userDetail)
     }
+
+
 }
