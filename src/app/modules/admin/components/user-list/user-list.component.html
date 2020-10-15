@@ -14,5 +14,5 @@
          </div>
       </div><!-- /.container-fluid -->
    </section>
-   <app-table></app-table>
+   <app-table (blockUser) = "blockUser($event)" (deleteUser)="deleteUser($event)" (unblockUser)="unblockUser($event)" (resetUserPw)="resetUserPw($event)" #componentT></app-table>
 </div>

@@ -23,8 +23,8 @@ export class UserDetailComponent implements OnInit {
     userDetail(): void {
         this.id = this.router.snapshot.params.id;
         this.user = new UserDetail();
-        this.userDetailService.getUserById(this.id).subscribe(value => {
-            this.user = value;
+        this.userDetailService.getUserById(this.id).subscribe(rs => {
+            this.user = rs.data;
         });
     }
 }

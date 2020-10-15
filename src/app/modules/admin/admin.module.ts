@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {RouterModule, Routes} from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AdminComponent} from './components/admin/admin.component';
 import {UserListComponent} from './components/user-list/user-list.component';
 import {UpdateUserComponent} from './components/update-user/update-user.component';
@@ -12,7 +12,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {TableComponent} from './components/table/table.component';
 import {NgbdSortableHeader} from './directive/sortable.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
     {
@@ -41,8 +40,8 @@ const routes: Routes = [
         UpdateUserComponent,
         UserDetailComponent,
         TableComponent,
-        NgbdSortableHeader,
-        EditUserComponent],
+        NgbdSortableHeader
+    ],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

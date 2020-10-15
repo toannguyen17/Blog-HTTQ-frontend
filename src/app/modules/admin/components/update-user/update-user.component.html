@@ -3,7 +3,7 @@
         <div class="image-holder loginimg d-flex align-items-center">
             <img src="assets/static/image/register/customer-experience-blog.jpg" alt="" style="margin-top: 0">
         </div>
-        <form [formGroup]="">
+        <form [formGroup]="formGroup" (ngSubmit)="save()">
             <h3>Update user</h3>
             <div class="form-holder">
                 <input formControlName="email" type="email" name="email" class="form-control" placeholder="email">
@@ -48,7 +48,7 @@
             <div class="form-holder">
                 <input formControlName="accountNonLocked" type="email" name="accountNonLocked" class="form-control" placeholder="accountNonLocked">
             </div>
-            <button type="submit" style="margin-top: 10px">Login
+            <button type="submit" style="margin-top: 10px">Save
                 <i class="zmdi zmdi-long-arrow-right "></i>
             </button>
         </form>
