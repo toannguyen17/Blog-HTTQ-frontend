@@ -5,7 +5,8 @@ import {ResAuth}     from '../models/res-auth';
 import {environment} from '../../environments/environment';
 import {User}        from '../models/user';
 import {PostFindByUser} from '../models/post-find-by-user';
-import {PostPageable} from '../models/post-pageable';
+import {PostPageable}   from '../models/post-pageable';
+import {ResImage}       from '../models/res-image';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -30,5 +31,9 @@ export class UserService {
 
     findPost(form: PostFindByUser) {
         return this.http.post<ResBase<PostPageable>>(`${environment.API_URL}/user/post/search`, form);
+    }
+
+    uploadAvatar(form){
+        return this.http.post<ResBase<ResImage>>(`${environment.API_URL}/user/uploadAvatar`, form);
     }
 }

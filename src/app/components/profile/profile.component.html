@@ -4,7 +4,9 @@
 			<div class="col-lg-4 col-md-12 float-right">
 				<div class="sidebar-area">
 					<div class="sidebar-section about-author center-text">
-						<div class="author-image"><img src="assets/images/author-1-200x200.jpg" alt="Autohr Image">
+						<div class="author-image position-relative">
+							<img [src]="auth.user != null ? auth.user.avatar : ''" [alt]="auth.user != null ? auth.user.firstName + ' ' + auth.user.lastName : ''">
+							<div class="changer-avatar w-100 position-absolute" (click)="changerAvatar()">Changer</div>
 						</div>
 
 						<ul class="social-icons">
@@ -22,10 +24,10 @@
 						</h4>
 						<div class="">
 							<div class="form-group ">
-								<label class="text-info"> <b> Gender : </b></label> {{ auth.user.gender }}
+								<label class="text-info"> <b> Gender : </b></label> {{ (auth.user != null ? auth.user.gender : '') }}
 							</div>
 							<div class="form-group ">
-								<label class="text-info"> <b> Address : </b></label> {{ auth.user.address }}
+								<label class="text-info"> <b> Address : </b></label> {{ (auth.user != null ? auth.user.address : '') }}
 							</div>
 						</div>
 
