@@ -7,6 +7,7 @@ import {ProfileComponent}        from './components/profile/profile.component';
 import {ChangePasswordComponent} from './components/change-password/change-password.component';
 import {GuestGuard}              from './helpers/guard/guest.guard';
 import {PostViewComponent}       from './components/post-view/post-view.component';
+import {UpdateUserComponent} from './modules/admin/components/update-user/update-user.component';
 
 const routes: Routes = [
     {
@@ -17,10 +18,16 @@ const routes: Routes = [
         path        : 'post',
         loadChildren: () => import('./modules/form-post.module').then(m => m.FormPostModule)
     },
+    //admin
     {
         path        : 'admin',
         loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
     },
+    {
+        path: 'updateUser',
+        component: UpdateUserComponent
+    },
+    //
     {
         path     : 'login',
         component: LoginFormComponent, canActivate: [GuestGuard]

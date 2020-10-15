@@ -1,1 +1,43 @@
-<p>user-detail works!</p>
+<h3 class="text-center text-info">View guest details</h3>
+<div class="col-md-6 offset-md-3 ">
+    <div class="form-group ">
+        <label class="text-info"> <b> User Id : </b></label> {{ user.user_id }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> First Name : </b></label> {{ user.firstName }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> Last Name : </b></label> {{ user.lastName }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> Birthday : </b></label> {{ user.birthday }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> Gender : </b></label> {{ user.gender }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> Address : </b></label> {{ user.address }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> Email : </b></label> {{ user.email }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> AccountNonExpired : </b></label> {{ user.accountNonExpired }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> CredentialsNonExpired : </b></label> {{ user.credentialsNonExpired }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> AccountNonLocked : </b></label> {{ user.accountNonExpired }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> Attempts : </b></label> {{ user.attempts }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> UpdateAt : </b></label> {{ user.updateAt }}
+    </div>
+    <div class="form-group ">
+        <label class="text-info"> <b> CreatedAt : </b></label> {{ user.createdAt |date }}
+    </div>
+</div>
+

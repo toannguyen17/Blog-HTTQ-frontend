@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
 
     search() {
         let form = {
-            key: this.searchText,
+            key : this.searchText,
             page: this.page
         };
         console.log(form);
@@ -43,9 +43,36 @@ export class ProfileComponent implements OnInit {
             console.log(this.postPageable);
         });
     }
-    pageChange(event){
-        console.log(this.page, event)
+
+    pageChange(event) {
+        console.log(this.page, event);
         this.page = event;
         this.search();
+    }
+
+    change(event) {
+        if (event.target.files && event.target.files[0]) {
+            let file       = event.target.files[0];
+            const formData = new FormData();
+            console.log(formData);
+            console.log(file);
+            formData.append('file', file, file.name);
+            this.userService.uploadAvatar(formData).subscribe(response => {
+                if (response.status == 0) {
+                    let user    = this.auth.user;
+                    user.avatar = response.data.url;
+                    this.auth.userSubject.next(user);
+                }
+                console.log(response);
+            });
+        }
+    }
+
+    changerAvatar() {
+        let inputFile    = document.createElement('input');
+        inputFile.type   = 'file';
+        inputFile.accept = 'image/*';
+        inputFile.click();
+        inputFile.addEventListener('change', this.change.bind(this));
     }
 }

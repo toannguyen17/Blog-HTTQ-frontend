@@ -12,13 +12,13 @@ import {UserDetailComponent} from '../components/user-detail/user-detail.compone
 })
 
 export class UserDetailService {
+    constructor(private httpClient: HttpClient) {
+    }
 
     getAllUsers(): Observable<ResBase<UserDetail[]>> {
         return this.httpClient.get<ResBase<UserDetail[]>>(`${environment.API_URL}/admin/users`);
     }
 
-    constructor(private httpClient: HttpClient) {
-    }
 
     deleteUser(user) {
         return this.httpClient.delete<ResBase<UserDetail>>(`${environment.API_URL}/admin/users/${user.id}`);

@@ -1,1 +1,58 @@
-<p>update-user works!</p>
+<div class="wrapper" style="font-family: 'Palatino Linotype',sans-serif">
+    <div class="inner" style="background-color:ghostwhite">
+        <div class="image-holder loginimg d-flex align-items-center">
+            <img src="assets/static/image/register/customer-experience-blog.jpg" alt="" style="margin-top: 0">
+        </div>
+        <form [formGroup]="">
+            <h3>Update user</h3>
+            <div class="form-holder">
+                <input formControlName="email" type="email" name="email" class="form-control" placeholder="email">
+            </div>
+            <div class="form-holder">
+                <input formControlName="firstName" type="text" name="firstName" class="form-control" placeholder="firstName">
+            </div>
+            <div class="form-holder">
+                <input formControlName="lastName" type="text" name="lastName" class="form-control" placeholder="lastName">
+            </div>
+            <div class="form-holder">
+                <input formControlName="phone" type="email" name="phone" class="form-control" placeholder="phone">
+            </div>
+            <div class="form-holder">
+                <select formControlName="gender" name="gender" class="form-control" placeholder="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-holder">
+                <input formControlName="address" type="email" name="address" class="form-control" placeholder="address">
+            </div>
+            <div class="form-holder">
+                <input formControlName="attempts" type="email" name="attempts" class="form-control" placeholder="attempts">
+            </div>
+            <div class="form-holder">
+                <input disabled formControlName="createdAt" type="email" name="createdAt" class="form-control" placeholder="createdAt">
+            </div>
+            <div class="form-holder">
+                <input disabled formControlName="updatedAt" type="email" name="updatedAt" class="form-control" placeholder="updatedAt">
+            </div>
+            <div class="form-holder">
+                <input formControlName="enabled" type="email" name="enabled" class="form-control" placeholder="enabled">
+            </div>
+            <div class="form-holder">
+                <input formControlName="accountNonExpired" type="email" name="accountNonExpired" class="form-control" placeholder="accountNonExpired">
+            </div>
+            <div class="form-holder">
+                <input formControlName="credentialsNonExpired" type="email" name="credentialsNonExpired" class="form-control" placeholder="credentialsNonExpired">
+            </div>
+            <div class="form-holder">
+                <input formControlName="accountNonLocked" type="email" name="accountNonLocked" class="form-control" placeholder="accountNonLocked">
+            </div>
+            <button type="submit" style="margin-top: 10px">Login
+                <i class="zmdi zmdi-long-arrow-right "></i>
+            </button>
+        </form>
+    </div>
+</div>
+<script src="src/assets/static/js/jquery-3.3.1.min.js"></script>
+<script src="src/assets/static/js/main.js"></script>
