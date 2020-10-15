@@ -12,8 +12,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {TableComponent} from './components/table/table.component';
 import {NgbdSortableHeader} from './directive/sortable.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ReportComponent } from './components/report/report.component';
+import {ReportComponent} from './components/report/report.component';
 import {ChartsModule} from 'ng2-charts';
+import {CreateUserComponent} from './components/create-user/create-user.component';
 
 const routes: Routes = [
     {
@@ -39,6 +40,14 @@ const routes: Routes = [
             path: 'app-report',
             component: ReportComponent
         }]
+    },
+    {
+        path: '',
+        component: AdminComponent,
+        children: [{
+            path: 'app-create-user',
+            component: CreateUserComponent
+        }]
     }
 ];
 
@@ -52,8 +61,8 @@ const routes: Routes = [
         UserDetailComponent,
         TableComponent,
         NgbdSortableHeader,
-        ReportComponent
-    ],
+        ReportComponent,
+        CreateUserComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
