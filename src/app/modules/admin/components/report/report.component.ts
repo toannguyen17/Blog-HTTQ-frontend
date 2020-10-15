@@ -14,6 +14,7 @@ export class ReportComponent implements OnInit {
     constructor(private reportService: ReportService) {
         this.reportService.getReport().subscribe(rs => {
             this.report = rs.data;
+           this.barChartData = [{data: [this.report.numberOfPostLast7Days,this.report.numberOfPostLast30Days], label: 'Posts'}]
         });
     }
 
@@ -24,8 +25,7 @@ export class ReportComponent implements OnInit {
     public barChartLabels = ['Last 7 days','Last 30 days'];
     public barChartType = 'bar';
     public barChartLegend = true;
-    public barChartData = [
-        {data: [this.report.numberOfPostLast7Days,this.report.numberOfPostLast30Days], label: 'Posts'}];
+    public barChartData = [{data: [this.report.numberOfPostLast7Days,this.report.numberOfPostLast30Days], label: 'Posts'}];
 
     ngOnInit(): void {
     }
