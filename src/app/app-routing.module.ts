@@ -7,7 +7,8 @@ import {ProfileComponent}        from './components/profile/profile.component';
 import {ChangePasswordComponent} from './components/change-password/change-password.component';
 import {GuestGuard}              from './helpers/guard/guest.guard';
 import {PostViewComponent}       from './components/post-view/post-view.component';
-import {UpdateUserComponent} from './modules/admin/components/update-user/update-user.component';
+import {UpdateUserComponent}     from './modules/admin/components/update-user/update-user.component';
+import {TagsComponent}           from './components/tags/tags.component';
 
 const routes: Routes = [
     {
@@ -43,6 +44,10 @@ const routes: Routes = [
     {
         path     : 'editProfile',
         component: ChangePasswordComponent
+    },
+    {
+        path     : 'tags',
+        component: TagsComponent
     },
     {
         path     : ':seo',

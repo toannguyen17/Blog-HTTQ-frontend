@@ -17,7 +17,7 @@
     padding-left: 30px;
   }
 
-  .latest-post.col-lg-3 {
+  .right-post.col-lg-3 {
     flex: 100%;
     max-width: 100%;
     padding: 0;
@@ -39,7 +39,7 @@
 
 @media only screen and (max-width: 959px) {
   .post.col-lg-3,
-  .latest-post.col-lg-3 {
+  .right-post.col-lg-3 {
     flex: 0 0 33.33%;
     flex-basis: calc(33.33%);
     max-width: 33.33%;
@@ -79,7 +79,7 @@
 @media only screen and (max-width: 640px) {
   .post.col-lg-3,
   .post.col-lg-4,
-  .latest-post.col-lg-3 {
+  .right-post.col-lg-3 {
     flex: 0 0 50% !important;
     flex-basis: calc(50%) !important;
     max-width: 50% !important;
@@ -106,13 +106,13 @@
 }
 
 .post .title,
-.latest-post h5 {
+.right-post h5 {
   font-size: 1.1em;
   line-height: 1.5;
 }
 
 .post .date,
-.latest-post .date {
+.right-post .date {
   font-size: .9em;
   color: #949494;
 }
