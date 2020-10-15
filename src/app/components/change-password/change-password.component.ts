@@ -4,7 +4,6 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ChangePWRequestService} from '../../services/change-pwrequest.service';
-import {ChangePWRequest}        from '../../models/change-pwrequest';
 
 @Component({
     selector: 'app-change-password',
@@ -25,11 +24,11 @@ export class ChangePasswordComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this.fromBuilder.group({
-            email: [this.auth.user.email],
+            email: [this.auth.user.email, [Validators.email]],
             firstName: [this.auth.user.firstName, [Validators.required]],
-            lastName: [this.auth.user.lastName, []],
+            lastName: [this.auth.user.lastName, [Validators.required]],
             phone: [this.auth.user.phone, []],
-            gender: [this.auth.user.gender, []],
+            gender: [this.auth.user.gender, [Validators.required]],
             address: [this.auth.user.address, []]
         });
         this.formChangePW = this.fromBuilder.group({

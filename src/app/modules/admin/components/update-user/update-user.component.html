@@ -6,16 +6,28 @@
         <form [formGroup]="formGroup" (ngSubmit)="save()">
             <h3>Update user</h3>
             <div class="form-holder">
-                <input formControlName="email" type="email" name="email" class="form-control" placeholder="email">
+                <input formControlName="email" [class.is-invalid]="formGroup.get('email').invalid" type="email" name="email" class="form-control" placeholder="email">
+                <div class="invalid-feedback">
+                    Please provide a valid email.
+                </div>
             </div>
             <div class="form-holder">
-                <input formControlName="firstName" type="text" name="firstName" class="form-control" placeholder="firstName">
+                <input formControlName="firstName" [class.is-invalid]="formGroup.get('firstName').invalid" type="text" name="firstName" class="form-control" placeholder="firstName">
+                <div class="invalid-feedback">
+                    Please provide a valid firstName.
+                </div>
             </div>
             <div class="form-holder">
-                <input formControlName="lastName" type="text" name="lastName" class="form-control" placeholder="lastName">
+                <input formControlName="lastName" [class.is-invalid]="formGroup.get('lastName').invalid" type="text" name="lastName" class="form-control" placeholder="lastName">
+                <div class="invalid-feedback">
+                    Please provide a valid lastName.
+                </div>
             </div>
             <div class="form-holder">
-                <input formControlName="phone" type="email" name="phone" class="form-control" placeholder="phone">
+                <input formControlName="phone" [class.is-invalid]="formGroup.get('phone').invalid" type="email" name="phone" class="form-control" placeholder="phone">
+                <div class="invalid-feedback">
+                    Please provide a valid phone.
+                </div>
             </div>
             <div class="form-holder">
                 <select formControlName="gender" name="gender" class="form-control" placeholder="gender">
