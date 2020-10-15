@@ -4,8 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {ResBase} from '../../../models/res-base';
 import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
-import {UserDetailComponent} from '../components/user-detail/user-detail.component';
-
 
 @Injectable({
     providedIn: 'root'
@@ -32,8 +30,8 @@ export class UserDetailService {
         return this.httpClient.put<ResBase<UserDetail>>(`${environment.API_URL}/admin/unblock-user`, user);
     }
 
-    updateUser(user) {
-        return this.httpClient.put<ResBase<UserDetail>>(`${environment.API_URL}/admin/users`, user);
+    updateUser(id: number, userDetail: UserDetail) {
+        return this.httpClient.put<ResBase<UserDetail>>(`${environment.API_URL}/admin/updateUser/${id}`, userDetail);
     }
 
     createUser(user) {
@@ -42,6 +40,10 @@ export class UserDetailService {
 
     getUserById(id) {
         return this.httpClient.get<ResBase<UserDetail>>(`${environment.API_URL}/admin/users/${id}`);
+    }
+
+    getUserDetailById(id) {
+        return this.httpClient.get<ResBase<UserDetail>>(`${environment.API_URL}/admin/showUser/${id}`);
     }
 
     resetPassword(id) {

@@ -36,18 +36,29 @@
             <div class="form-holder">
                 <input disabled formControlName="updatedAt" type="email" name="updatedAt" class="form-control" placeholder="updatedAt">
             </div>
-            <div class="form-holder">
-                <input formControlName="enabled" type="email" name="enabled" class="form-control" placeholder="enabled">
+
+            <div class="form-check form-check-inline">
+                <input formControlName="enabled" class="form-check-input" type="checkbox" id="enabled">
+                <label class="form-check-label" for="enabled">enabled</label>
             </div>
-            <div class="form-holder">
-                <input formControlName="accountNonExpired" type="email" name="accountNonExpired" class="form-control" placeholder="accountNonExpired">
+
+
+            <div class="form-check form-check-inline">
+                <input formControlName="accountNonExpired" class="form-check-input" type="checkbox" id="accountNonExpired">
+                <label class="form-check-label" for="accountNonExpired">accountNonExpired</label>
             </div>
-            <div class="form-holder">
-                <input formControlName="credentialsNonExpired" type="email" name="credentialsNonExpired" class="form-control" placeholder="credentialsNonExpired">
+
+            <div class="form-check form-check-inline">
+                <input formControlName="credentialsNonExpired" class="form-check-input" type="checkbox" id="credentialsNonExpired">
+                <label class="form-check-label" for="credentialsNonExpired">credentialsNonExpired</label>
             </div>
-            <div class="form-holder">
-                <input formControlName="accountNonLocked" type="email" name="accountNonLocked" class="form-control" placeholder="accountNonLocked">
+
+            <div class="form-check form-check-inline">
+                <input formControlName="accountNonLocked" class="form-check-input" type="checkbox" id="accountNonLocked">
+                <label class="form-check-label" for="accountNonLocked">accountNonLocked</label>
             </div>
+
+
             <button type="submit" style="margin-top: 10px">Save
                 <i class="zmdi zmdi-long-arrow-right "></i>
             </button>
