@@ -7,6 +7,7 @@ import {User}        from '../models/user';
 import {PostFindByUser} from '../models/post-find-by-user';
 import {PostPageable}   from '../models/post-pageable';
 import {ResImage}       from '../models/res-image';
+import {UserDetail} from '../modules/admin/interface/user-detail';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
