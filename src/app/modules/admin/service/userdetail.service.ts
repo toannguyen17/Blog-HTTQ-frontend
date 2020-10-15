@@ -21,6 +21,9 @@ export class UserDetailService {
     getUserById(id:number): Observable<UserDetail> {
         return  this.httpClient.get<UserDetail>(`${environment.API_URL}/admin/users/${id}`)
     }
+    deleteUserById(id:number): Observable<UserDetail> {
+        return  this.httpClient.delete<UserDetail>(`${environment.API_URL}/admin/users/${id}`)
+    }
 
     updateUser(userDetail: UserDetail): Observable<UserDetail> {
         return this.httpClient.put<UserDetail>(`${environment.API_URL}/admin/user`, userDetail)

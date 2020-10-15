@@ -37,6 +37,14 @@ const routes: Routes = [
             path: 'create-user',
             component: CreateUserComponent
         }]
+    },
+    {
+        path: '',
+        component: AdminComponent,
+        children: [{
+            path: 'update-user',
+            component: UpdateUserComponent
+        }]
     }
 ];
 

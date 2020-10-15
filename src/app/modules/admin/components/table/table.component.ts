@@ -4,15 +4,18 @@ import {NgbdSortableHeader, SortEvent} from '../../directive/sortable.directive'
 import {UserDetail} from '../../interface/user-detail';
 import {TableService} from '../../service/table.service';
 
+import {UserDetailService} from '../../service/userdetail.service';
+
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-table',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TableComponent implements OnInit {
     users$: Observable<UserDetail[]>;
     total$: Observable<number>;
+    userService: UserDetailService;
     @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
     constructor(public service: TableService
@@ -31,6 +34,12 @@ export class TableComponent implements OnInit {
 
         this.service.sortColumn = column;
         this.service.sortDirection = direction;
+    }
+
+    deleteUser(id: number): void {
+        this.userService.deleteUserById(id).subscribe(user => {
+            console.log(user);
+        });
     }
 
     ngOnInit(): void {

@@ -1,58 +1,58 @@
-<div class="wrapper" style="font-family: 'Palatino Linotype',sans-serif">
-    <div class="inner" style="background-color:ghostwhite">
-        <div class="image-holder loginimg d-flex align-items-center">
-            <img src="assets/static/image/register/customer-experience-blog.jpg" alt="" style="margin-top: 0">
-        </div>
-        <form [formGroup]="">
-            <h3>Update user</h3>
-            <div class="form-holder">
-                <input formControlName="email" type="email" name="email" class="form-control" placeholder="email">
+
+<div class="container-fluid">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h2>Update User</h2>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a routerLink="/admin/" role="button">Home</a></li>
+                        <li class="breadcrumb-item active">Update User</li>
+                    </ol>
+                </div>
             </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <form>
+            <input formControlName="firstName" type="text" name="firstName" class="form-control" placeholder="First Name">
+            <input formControlName="lastName" type="text" name="lastName" class="form-control" placeholder="Last Name">
+            <input formControlName="email" type="text" name="email" class="form-control" placeholder="Email">
             <div class="form-holder">
-                <input formControlName="firstName" type="text" name="firstName" class="form-control" placeholder="firstName">
-            </div>
-            <div class="form-holder">
-                <input formControlName="lastName" type="text" name="lastName" class="form-control" placeholder="lastName">
-            </div>
-            <div class="form-holder">
-                <input formControlName="phone" type="email" name="phone" class="form-control" placeholder="phone">
-            </div>
-            <div class="form-holder">
-                <select formControlName="gender" name="gender" class="form-control" placeholder="gender">
+                <select formControlName="gender" name="gender" class="form-control" placeholder="Gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
                 </select>
             </div>
             <div class="form-holder">
-                <input formControlName="address" type="email" name="address" class="form-control" placeholder="address">
+                <input formControlName="phone" type="text" name="phone" class="form-control" placeholder="phone">
             </div>
             <div class="form-holder">
-                <input formControlName="attempts" type="email" name="attempts" class="form-control" placeholder="attempts">
+                <input formControlName="address" type="text" name="address" class="form-control" placeholder="address">
+            </div>
+            <input formControlName="password" type="password" name="password" class="form-control" placeholder="Password">
+            <div class="form-holder">
+                <input formControlName="enabled" type="text" name="enabled" class="form-control" placeholder="enabled">
             </div>
             <div class="form-holder">
-                <input disabled formControlName="createdAt" type="email" name="createdAt" class="form-control" placeholder="createdAt">
+                <input formControlName="accountNonExpired" type="text" name="accountNonExpired" class="form-control" placeholder="accountNonExpired">
             </div>
             <div class="form-holder">
-                <input disabled formControlName="updatedAt" type="email" name="updatedAt" class="form-control" placeholder="updatedAt">
+                <input formControlName="credentialsNonExpired" type="text" name="credentialsNonExpired" class="form-control" placeholder="credentialsNonExpired">
             </div>
             <div class="form-holder">
-                <input formControlName="enabled" type="email" name="enabled" class="form-control" placeholder="enabled">
+                <input formControlName="accountNonLocked" type="text" name="accountNonLocked" class="form-control" placeholder="accountNonLocked">
             </div>
-            <div class="form-holder">
-                <input formControlName="accountNonExpired" type="email" name="accountNonExpired" class="form-control" placeholder="accountNonExpired">
+            <div class="row mt-1 text-center">
+                <div class="col-12">
+                    <a routerLink="/admin/" class="btn btn-secondary p-2 rounded">Cancel</a>
+                    <a class="btn btn-secondary p-2 ml-2 rounded">Create</a>
+                </div>
             </div>
-            <div class="form-holder">
-                <input formControlName="credentialsNonExpired" type="email" name="credentialsNonExpired" class="form-control" placeholder="credentialsNonExpired">
-            </div>
-            <div class="form-holder">
-                <input formControlName="accountNonLocked" type="email" name="accountNonLocked" class="form-control" placeholder="accountNonLocked">
-            </div>
-            <button type="submit" style="margin-top: 10px">Login
-                <i class="zmdi zmdi-long-arrow-right "></i>
-            </button>
         </form>
-    </div>
+    </section>
 </div>
-<script src="src/assets/static/js/jquery-3.3.1.min.js"></script>
 <script src="src/assets/static/js/main.js"></script>
