@@ -17,7 +17,7 @@ export class UserDetailService {
     }
 
     getUserById(id:number): Observable<UserDetail> {
-        return  this.httpClient.get<UserDetail>(`${environment.API_URL}/admin/user/${id}`)
+        return  this.httpClient.get<UserDetail>(`${environment.API_URL}/admin/users/${id}`)
     }
 
     constructor(private httpClient: HttpClient) {

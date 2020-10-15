@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {TableComponent} from './components/table/table.component';
 import {NgbdSortableHeader} from './directive/sortable.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {CreateUserComponent} from './components/create-user/create-user.component';
 
 const routes: Routes = [
     {
@@ -21,12 +22,20 @@ const routes: Routes = [
             path: 'user-list',
             component: UserListComponent
         }]
-    },{
+    }, {
         path: '',
         component: AdminComponent,
         children: [{
             path: 'user-detail/:id',
             component: UserDetailComponent
+        }]
+    },
+    {
+        path: '',
+        component: AdminComponent,
+        children: [{
+            path: 'create-user',
+            component: CreateUserComponent
         }]
     }
 ];
@@ -40,7 +49,8 @@ const routes: Routes = [
         UpdateUserComponent,
         UserDetailComponent,
         TableComponent,
-        NgbdSortableHeader],
+        NgbdSortableHeader,
+        CreateUserComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
