@@ -41,8 +41,9 @@
             </td>
             <td class="text-center">
                 <a class="btn btn-warning rounded text-center  " style="width: 80px; padding: 5px " [routerLink]="'/updateUser'">Edit</a>
-                <a class="btn btn-danger ml-3 rounded " style="width: 80px ;padding: 5px  ">Delete</a>
-                <a class="btn btn-dark ml-3 rounded" style="width: 80px ;padding: 5px ">Block</a>
+                <button class="btn btn-danger ml-3 rounded " style="width: 80px ;padding: 5px" (click)="resetPw(user.id)">Reset PW</button>
+                <button class="btn btn-dark ml-3 rounded" style="width: 80px ;padding: 5px " (click)="block(user)">{{user.enabled?'Block':'Unblock'}}</button>
+                <button class="btn btn-danger ml-3 rounded " style="width: 80px ;padding: 5px" (click)="delete(user.id)">Delete</button>
             </td>
         </tr>
         </tbody>

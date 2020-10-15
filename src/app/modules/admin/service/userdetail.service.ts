@@ -28,12 +28,23 @@ export class UserDetailService {
         return this.httpClient.put<ResBase<UserDetail>>(`${environment.API_URL}/admin/block-user`, user);
     }
 
+    unblockUser(user) {
+        return this.httpClient.put<ResBase<UserDetail>>(`${environment.API_URL}/admin/unblock-user`, user);
+    }
+
     updateUser(user) {
         return this.httpClient.put<ResBase<UserDetail>>(`${environment.API_URL}/admin/users`, user);
     }
 
     createUser(user) {
-        return this.httpClient.post<ResBase<UserDetail>>(`${environment.API_URL}/admin/users`,user);
+        return this.httpClient.post<ResBase<UserDetail>>(`${environment.API_URL}/admin/users`, user);
     }
 
+    getUserById(id) {
+        return this.httpClient.get<ResBase<UserDetail>>(`${environment.API_URL}/admin/users/${id}`);
+    }
+
+    resetPassword(id) {
+        return this.httpClient.put<ResBase<UserDetail>>(`${environment.API_URL}/admin/resetpw`, id);
+    }
 }

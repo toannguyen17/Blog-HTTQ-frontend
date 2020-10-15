@@ -44,11 +44,11 @@ function matches(user: UserDetail, term: string) {
 
 @Injectable({providedIn: 'root'})
 export class TableService {
-  private _loading$ = new BehaviorSubject<boolean>(true);
-  private _search$ = new Subject<void>();
-  private _users$ = new BehaviorSubject<UserDetail[]>([]);
-  private _total$ = new BehaviorSubject<number>(0);
-  private users: UserDetail[] = [];
+  public _loading$ = new BehaviorSubject<boolean>(true);
+  public _search$ = new Subject<void>();
+  public _users$ = new BehaviorSubject<UserDetail[]>([]);
+  public _total$ = new BehaviorSubject<number>(0);
+  public users: UserDetail[] = [];
 
   private _state: State = {
     page: 1,
