@@ -1,18 +1,20 @@
 <div class="container-fluid">
-   <section class="content-header">
-      <div class="container-fluid">
-         <div class="row mb-2">
-            <div class="col-sm-6">
-               <h2>Guest List</h2>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h2>Guest List</h2>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a routerLink="/admin/">Home</a></li>
+                        <li class="breadcrumb-item active">Guest List</li>
+                    </ol>
+                </div>
             </div>
-            <div class="col-sm-6">
-               <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a routerLink="/admin/">Home</a></li>
-                  <li class="breadcrumb-item active">Guest List</li>
-               </ol>
-            </div>
-         </div>
-      </div><!-- /.container-fluid -->
-   </section>
-   <app-table (blockUser) = "blockUser($event)" (deleteUser)="deleteUser($event)" (unblockUser)="unblockUser($event)" (resetUserPw)="resetUserPw($event)" #componentT></app-table>
+        </div><!-- /.container-fluid -->
+    </section>
+    <app-table (blockUser)="blockUser($event)" (deleteUser)="deleteUser($event)" (unblockUser)="unblockUser($event)"
+               (resetUserPw)="resetUserPw($event)" #componentT></app-table>
 </div>
+
