@@ -33,7 +33,6 @@ import { NotFoundComponent }  from './components/errors/not-found/not-found.comp
         ProfileComponent,
         ChangePasswordComponent,
         ToastContainerComponent,
-        EditUserComponent,
 
         ForbiddenComponent,
         NotFoundComponent,
