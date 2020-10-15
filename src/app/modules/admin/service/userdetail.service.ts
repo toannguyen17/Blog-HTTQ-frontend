@@ -18,8 +18,8 @@ export class UserDetailService {
     }
 
 
-    deleteUser(user) {
-        return this.httpClient.delete<ResBase<UserDetail>>(`${environment.API_URL}/admin/users/${user.id}`);
+    deleteUser(id) {
+        return this.httpClient.delete<ResBase<UserDetail>>(`${environment.API_URL}/admin/users/${id}`);
     }
 
     blockUser(user) {

@@ -41,6 +41,7 @@ export class TableComponent implements OnInit {
 
     delete(id) {
         this.deleteUser.emit(id);
+        console.log(id)
     }
 
     block(user) {

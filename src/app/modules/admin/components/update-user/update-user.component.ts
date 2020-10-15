@@ -15,7 +15,6 @@ import {ChangePWRequestService} from '../../../../services/change-pwrequest.serv
 export class UpdateUserComponent implements OnInit {
     formGroup: FormGroup;
     userDetail: UserDetail = {};
-    changePwFormGroup: FormGroup;
 
     constructor(private userDetailService: UserDetailService,
                 private activatedRoute: ActivatedRoute,
