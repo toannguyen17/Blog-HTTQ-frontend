@@ -27,6 +27,26 @@
   color: #7b7f84;
 }
 
+.comment {
+  padding: 10px;
+  background: rgb(222 226 230 / 30%);
+  border-radius: 15px;
+}
+
+.comment .avatar img {
+  width: 45px;
+  border-radius: 50%;
+  height: 45px;
+}
+
+
+.comment .auth .name {
+}
+
+.comment .auth .time {
+  color: #7b7f84;
+}
+
 
 .tags {
   font-size: 13px;

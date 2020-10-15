@@ -19,12 +19,11 @@
 		<div class="mt-4" [innerHTML]="post.content"></div>
 		<div class="tags mt-4">
 			<a *ngFor="let tag of tags" class="tag-item" [routerLink]="['/tags']"
-			   [queryParams]="{t:tag.id}">{{ tag.tag }}</a>
+			   [queryParams]="{t:tag.tag}">{{ tag.tag }}</a>
 		</div>
-		<div class="reaction mt-3">reaction</div>
 	</div>
-	<div [style.max-width.px]="800" class="m-auto">
-		<div>Comment</div>
+	<div [style.max-width.px]="800" class="container-xl p-0 mt-5 border-top pt-4">
+		<h4>Comment</h4>
 		<div class="comment-form mt-2" *ngIf="auth.isLogin()">
 			<form [formGroup]="formComment" class="p-0" (ngSubmit)="onSubmitComment()">
 				<div class="form-group">
@@ -34,6 +33,7 @@
 			</form>
 		</div>
 		<div class="list_comment">
+			<div *ngFor="let comment of comments" class="comment mt-4" [data]="comment"></div>
 		</div>
 	</div>
 </div>

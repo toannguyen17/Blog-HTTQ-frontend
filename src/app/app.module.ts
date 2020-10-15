@@ -10,16 +10,18 @@ import {NavbarComponent}       from './components/navbar/navbar.component';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor}                      from './helpers/jwt.interceptor';
-import {ErrorInterceptor}                    from './helpers/error.interceptor';
-import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
-import {PostViewComponent}                   from './components/post-view/post-view.component';
-import {SeekComponent}                       from './components/seek/seek.component';
-import {ProfileComponent}                    from './components/profile/profile.component';
-import {ChangePasswordComponent}             from './components/change-password/change-password.component';
-import {NgbModule}                           from '@ng-bootstrap/ng-bootstrap';
-import {ToastContainerComponent}             from './components/toast/toast-container/toast-container.component';
-import { ForbiddenComponent } from './components/errors/forbidden/forbidden.component';
-import { NotFoundComponent }  from './components/errors/not-found/not-found.component';
+import {ErrorInterceptor}                 from './helpers/error.interceptor';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PostViewComponent}                from './components/post-view/post-view.component';
+import {SeekComponent}                    from './components/seek/seek.component';
+import {ProfileComponent}                 from './components/profile/profile.component';
+import {ChangePasswordComponent}          from './components/change-password/change-password.component';
+import {NgbModule}                        from '@ng-bootstrap/ng-bootstrap';
+import {ToastContainerComponent}          from './components/toast/toast-container/toast-container.component';
+import { ForbiddenComponent }             from './components/errors/forbidden/forbidden.component';
+import { NotFoundComponent }              from './components/errors/not-found/not-found.component';
+import { CommentComponent }               from './components/comment/comment.component';
+import {TagsComponent}                    from './components/tags/tags.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +38,8 @@ import { NotFoundComponent }  from './components/errors/not-found/not-found.comp
 
         ForbiddenComponent,
         NotFoundComponent,
+        CommentComponent,
+        TagsComponent,
     ],
     imports     : [
         BrowserModule,

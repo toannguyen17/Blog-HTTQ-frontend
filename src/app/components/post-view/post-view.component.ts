@@ -1,13 +1,7 @@
 import {
-    AfterContentChecked,
-    AfterContentInit, AfterViewChecked,
-    AfterViewInit,
     Component,
     DoCheck,
-    ElementRef, OnChanges,
-    OnInit, SimpleChanges,
-    TemplateRef,
-    ViewChild,
+    OnInit,
     ViewEncapsulation
 } from '@angular/core';
 
@@ -19,6 +13,9 @@ import {UserRole}                           from '../../models/user-role';
 import {Post}                               from '../../models/post';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastService}                       from '../../services/toast.service';
+import {CommentService}                     from '../../services/comment.service';
+import {CommentPage}                        from '../../models/commentPage';
+import {Comment}                            from '../../models/comment';
 
 @Component({
     selector     : '.post-view',
@@ -43,6 +40,11 @@ export class PostViewComponent implements OnInit, DoCheck {
     public err404: boolean = false;
     public render: boolean = false;
 
+    private page: number = 1;
+
+    commentPage: CommentPage;
+    comments: Comment[] = [];
+
     formComment: FormGroup;
 
     constructor(
@@ -51,7 +53,8 @@ export class PostViewComponent implements OnInit, DoCheck {
         private activatedRoute: ActivatedRoute,
         public auth: AuthenticationService,
         private formBuilder: FormBuilder,
-        private toast: ToastService
+        private toast: ToastService,
+        private commentService: CommentService
     ) {
     }
 
@@ -69,14 +72,17 @@ export class PostViewComponent implements OnInit, DoCheck {
     }
 
     getContent() {
-        this.seo = this.activatedRoute.snapshot.params.seo;
+        this.page = 1;
+        this.comments = [];
+        this.seo  = this.activatedRoute.snapshot.params.seo;
         this.postService.findBySeo(this.seo).subscribe(response => {
+            console.log(response);
             if (response.status === 0) {
                 this.render = true;
                 this.err404 = false;
 
-                this.post                          = response.data;
-                this.tags                          = this.post.tags;
+                this.post = response.data;
+                this.tags = this.post.tags;
                 if (response.data.subTitle.trim().length > 0) {
                     this.showSubTitle = true;
                 }
@@ -90,6 +96,8 @@ export class PostViewComponent implements OnInit, DoCheck {
                 } else {
                     this.control = false;
                 }
+
+                this.getComment();
             } else {
                 this.render = false;
                 this.err404 = true;
@@ -106,9 +114,41 @@ export class PostViewComponent implements OnInit, DoCheck {
         }
     }
 
-    onSubmitComment(){
-        if (this.formComment.valid){
+    getComment() {
+        let form = {
+            id  : this.post.id,
+            page: this.page
+        };
 
+        this.commentService.getComment(form).subscribe(response => {
+            if (response.status === 0) {
+                this.commentPage = response.data;
+
+                this.commentPage.comments.forEach(comment => {
+                    this.comments.push(comment);
+                })
+                console.log(response.data);
+            }
+        });
+    }
+
+    onSubmitComment() {
+        console.log(this.formComment.value);
+        if (this.formComment.valid) {
+            let form = {
+                post   : this.post.id,
+                comment: this.formComment.value.comment
+            };
+            console.log(form);
+            this.commentService.save(form).subscribe(response => {
+                if (response.status === 0){
+                    this.comments.unshift(response.data);
+                }
+            });
+            this.formComment.patchValue({
+                comment: ''
+            });
+        } else {
         }
     }
 }
