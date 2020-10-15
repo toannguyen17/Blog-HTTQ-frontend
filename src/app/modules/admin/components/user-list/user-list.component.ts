@@ -45,6 +45,7 @@ export class UserListComponent implements OnInit {
     }
 
     deleteUser(id){
+        console.log(id);
         let user: UserDetail = {};
         let index: number = -1;
         for (let i = 0; i < this.users.length; i++) {
@@ -54,9 +55,11 @@ export class UserListComponent implements OnInit {
                 break;
             }
         }
+        console.log(user, index)
         if (confirm('You are going to delete user: ' + user.firstName + ' ' + user.lastName + ', id: ' + user.id + '. Are you sure?')) {
-            this.userDetailService.deleteUser(user).subscribe(rs => {
+            this.userDetailService.deleteUser(id).subscribe(rs => {
                 alert(rs.msg);
+                console.log(rs)
                 this.users.splice(index,1);
                 this.componentT.service.users = this.users;
                 this.componentT.service._users$.next(this.users);

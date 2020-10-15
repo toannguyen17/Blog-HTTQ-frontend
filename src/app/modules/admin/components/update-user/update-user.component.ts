@@ -14,43 +14,64 @@ import {ChangePWRequestService} from '../../../../services/change-pwrequest.serv
 })
 export class UpdateUserComponent implements OnInit {
     formGroup: FormGroup;
-    user: UserDetail = {};
-    changePwRequest: ChangePWRequest = {};
-    changePwFormGroup: FormGroup;
+    userDetail: UserDetail = {};
 
     constructor(private userDetailService: UserDetailService,
                 private activatedRoute: ActivatedRoute,
                 private router: Router,
-                private formBuilder: FormBuilder,
-                private changePwService: ChangePWRequestService) {
-        let id: number = activatedRoute.snapshot.params.id;
-        userDetailService.getUserById(id).subscribe(rs => {
-            this.user = rs.data;
-        });
+                private formBuilder: FormBuilder,){
     }
 
     save() {
+        console.log(this.formGroup.value);
         if (confirm('Once you saved changes, you can not undo. Are you sure?')) {
-            this.userDetailService.updateUser(this.user).subscribe(rs => {
-                this.user = rs.data;
+            this.userDetailService.updateUser(this.userDetail.id, this.formGroup.value).subscribe(rs => {
+                this.userDetail = rs.data;
                 alert(rs.msg);
-                this.router.navigate(['user-list']);
+                this.router.navigate(['/admin/user-list']);
             });
         }
     }
 
     ngOnInit(): void {
         this.formGroup = this.formBuilder.group({
-            firstName: [this.user.firstName, [Validators.required]],
-            lastName: [this.user.lastName, [Validators.required]],
-            address: [this.user.address, []],
-            email: [this.user.email, [Validators.email]],
-            phone: [this.user.phone, [Validators.required]],
+            firstName: ['', [Validators.required]],
+            lastName: ['', [Validators.required]],
+            address: ['', []],
+            email: ['', [Validators.email]],
+            phone: ['', [Validators.required]],
+            gender: ['', [Validators.required]],
+            attempts: [''],
+            createdAt: [''],
+            updatedAt: '',
+            enabled: [''],
+            accountNonExpired: [''],
+            credentialsNonExpired: [''],
+            accountNonLocked: ['']
         });
-        this.changePwFormGroup = this.formBuilder.group({
-            password: ['',[Validators.required,Validators.minLength(6)]],
-            newPassword: ['',[Validators.required,Validators.minLength(6)]]
-        })
+
+        let id: number = this.activatedRoute.snapshot.params.id;
+
+
+        this.userDetailService.getUserDetailById(id).subscribe(rs => {
+            this.userDetail = rs.data;
+
+            this.formGroup.patchValue({
+                firstName: this.userDetail.firstName,
+                lastName: this.userDetail.lastName,
+                address: this.userDetail.address,
+                email: this.userDetail.email,
+                phone: this.userDetail.phone,
+                gender: this.userDetail.gender,
+                attempts: this.userDetail.attempts,
+                createdAt: this.userDetail.createdAt,
+                updatedAt: this.userDetail.updateAt,
+                enabled: this.userDetail.enabled,
+                accountNonExpired: this.userDetail.accountNonExpired,
+                credentialsNonExpired: this.userDetail.credentialsNonExpired,
+                accountNonLocked: this.userDetail.accountNonLocked
+            })
+        });
     }
 
 
