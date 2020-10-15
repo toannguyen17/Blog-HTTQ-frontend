@@ -3,6 +3,7 @@ import {HttpClient}  from '@angular/common/http';
 import {ResBase}     from '../models/res-base';
 import {environment} from '../../environments/environment';
 import {Post}        from '../models/post';
+import {ReViewPost}  from '../models/reViewPost';
 
 @Injectable({providedIn: 'root'})
 export class PostService {
@@ -10,11 +11,11 @@ export class PostService {
     }
 
     public save(form){
-        return this.http.post<ResBase<any>>(`${environment.API_URL}/post`, form, {withCredentials: true});
+        return this.http.post<ResBase<ReViewPost>>(`${environment.API_URL}/post`, form, {withCredentials: true});
     }
 
     public update(form){
-        return this.http.put<ResBase<any>>(`${environment.API_URL}/post`, form, {withCredentials: true});
+        return this.http.put<ResBase<ReViewPost>>(`${environment.API_URL}/post`, form, {withCredentials: true});
     }
 
     public findBySeo(seo: string){

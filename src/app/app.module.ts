@@ -18,8 +18,8 @@ import {ProfileComponent}                    from './components/profile/profile.
 import {ChangePasswordComponent}             from './components/change-password/change-password.component';
 import {NgbModule}                           from '@ng-bootstrap/ng-bootstrap';
 import {ToastContainerComponent}             from './components/toast/toast-container/toast-container.component';
-import {DecimalPipe} from '@angular/common';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import { ForbiddenComponent } from './components/errors/forbidden/forbidden.component';
+import { NotFoundComponent }  from './components/errors/not-found/not-found.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +34,9 @@ import { EditUserComponent } from './edit-user/edit-user.component';
         ChangePasswordComponent,
         ToastContainerComponent,
         EditUserComponent,
+
+        ForbiddenComponent,
+        NotFoundComponent,
     ],
     imports     : [
         BrowserModule,

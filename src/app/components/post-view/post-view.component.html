@@ -1,28 +1,41 @@
-<div class="container-xl mt-5 mb-5">
-	<div *ngIf="auth.isLogin()" class="text-right">
+<div class="container-xl mt-5 mb-5" *ngIf="render">
+	<div *ngIf="control" class="text-right">
 		<a class="btn btn-success" [routerLink]="'/post/edit/' + seo">Edit</a>
 		<a class="btn btn-danger ml-3" [routerLink]="'/post/delete/' + seo" (click)="deletePost()">Delete</a>
 	</div>
 	<div [style.max-width.px]="800" class="m-auto post-content">
-		<h1 #title class="mb-3"></h1>
-		<h2 #subTitle class="mb-3 subtitle" *ngIf="showSubTitle"></h2>
-		<div #content></div>
+		<h1 class="mb-3">{{ post.title }}</h1>
+		<h2 class="mb-3 subtitle" *ngIf="showSubTitle">{{ post.subTitle }}</h2>
+		<div class="d-flex mt-4">
+			<div class="avatar">
+				<img [src]="post.auth.thumbnail != null ? post.auth.thumbnail : '/assets/noimage.png'"
+				     [alt]="post.auth.firstName">
+			</div>
+			<div class="ml-2 d-flex justify-content-center flex-column auth">
+				<span class="name text-uppercase">{{ post.auth.firstName }} {{ post.auth.lastName }}</span>
+				<small class="time">{{ post.createdAt | date:'EEEE, MMMM d, y' }}</small>
+			</div>
+		</div>
+		<div class="mt-4" [innerHTML]="post.content"></div>
 		<div class="tags mt-4">
-			<a *ngFor="let tag of tags" class="tag-item" [routerLink]="['/tags', {t:'tag.id'}]">{{ tag.tag }}</a>
+			<a *ngFor="let tag of tags" class="tag-item" [routerLink]="['/tags']"
+			   [queryParams]="{t:tag.id}">{{ tag.tag }}</a>
 		</div>
 		<div class="reaction mt-3">reaction</div>
-		<div class="comment mt-5">
-			<div class="add_comment">
-				<form>
-					<div class="form-group">
-						<label for="inputComponent" style="">Comment</label>
-						<textarea class="form-control" id="inputComponent" rows="2"></textarea>
-					</div>
-					<button class="btn btn-outline-info" type="submit">Comment</button>
-				</form>
-			</div>
-			<div class="list_comment">
-			</div>
+	</div>
+	<div [style.max-width.px]="800" class="m-auto">
+		<div>Comment</div>
+		<div class="comment-form mt-2" *ngIf="auth.isLogin()">
+			<form [formGroup]="formComment" class="p-0" (ngSubmit)="onSubmitComment()">
+				<div class="form-group">
+					<textarea formControlName="comment" class="form-control" id="inputComponent" rows="2"></textarea>
+				</div>
+				<button class="btn btn-outline-info" type="submit">Comment</button>
+			</form>
+		</div>
+		<div class="list_comment">
 		</div>
 	</div>
 </div>
+
+<div class="container-xl mt-5 mb-5 not-found" *ngIf="err404"></div>

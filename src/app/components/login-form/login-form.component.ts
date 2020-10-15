@@ -37,7 +37,7 @@ export class LoginFormComponent implements OnInit {
                     this.authentication.startRefreshTokenTimer();
                     this.router.navigateByUrl("/")
                     this.toast.show('Login success.', {
-                        class: 'bg-success text-light'
+                        class: 'bg-success text-white'
                     })
                 },
                 error => {
@@ -49,7 +49,7 @@ export class LoginFormComponent implements OnInit {
                     }
 
                     this.toast.show(text_err, {
-                        class: 'bg-danger text-light'
+                        class: 'bg-danger text-white'
                     })
                     console.log(error);
                 },
