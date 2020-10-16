@@ -4,6 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   encapsulation: ViewEncapsulation.None
+
 })
 export class AdminComponent implements OnInit {
 
