@@ -38,7 +38,7 @@ export class UpdateUserComponent implements OnInit {
             firstName: ['', [Validators.required]],
             lastName: ['', [Validators.required]],
             address: ['', []],
-            email: ['', [Validators.email]],
+            email: ['', [Validators.email, Validators.required]],
             phone: ['', [Validators.required]],
             gender: ['', [Validators.required]],
             attempts: [''],

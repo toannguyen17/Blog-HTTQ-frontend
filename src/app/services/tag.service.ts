@@ -9,11 +9,15 @@ export class TagService {
     constructor(private http: HttpClient) {
     }
 
-    public findByTag(tag: string){
-        return this.http.get<ResBase<Post>>(`${environment.API_URL}/post/${tag}`);
+    public findPostByTagList(tags: string[], page: number) {
+        return this.http.get<ResBase<any>>(`${environment.API_URL}/tags?t=` + tags.join('&t=') + '&page=' + page);
     }
 
-    public findByTagContains(tag: string){
-        return this.http.get<ResBase<Post>>(`${environment.API_URL}/post/${tag}`);
+    public findByTag(tag: string) {
+        return this.http.get<ResBase<Post>>(`${environment.API_URL}/tag/${tag}`);
+    }
+
+    public findByTagContains(tag: string) {
+        return this.http.get<ResBase<Post>>(`${environment.API_URL}/tag/${tag}`);
     }
 }
