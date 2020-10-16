@@ -1,0 +1,158 @@
+
+.post.col-lg-4 {
+  flex: 0 0 33.33%;
+  flex-basis: calc(33.33%);
+  max-width: 33.33%;
+  margin: 0;
+  padding: 0;
+  border-radius: 6px;
+}
+
+@media only screen and (min-width: 992px) {
+  .post_C .col-lg-9 {
+    padding-right: 30px;
+  }
+
+  .post_C .col-lg-3 {
+    padding-left: 30px;
+  }
+
+  .right-post.col-lg-3 {
+    flex: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+}
+
+
+@media only screen and (max-width: 992px) {
+  .col-lg-9 {
+    padding: 0;
+  }
+  .col-lg-3 {
+    padding: 6px;
+  }
+  .col-lg-3.right, .col-lg-9.right {
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .post.col-lg-3,
+  .right-post.col-lg-3 {
+    flex: 0 0 33.33%;
+    flex-basis: calc(33.33%);
+    max-width: 33.33%;
+  }
+}
+
+
+.blog-posts a.post:nth-child(1) {
+  flex: 66.66%;
+  max-width: 66.66%;
+}
+
+.blog-posts a.post:nth-child(1) .title {
+  font-size: 1.5em;
+}
+
+.blog-posts a.post:nth-child(1) .description {
+  display: none;
+}
+
+.blog-posts a.post:nth-child(2) {
+  flex: 0 0 33.33%;
+  flex-basis: calc(33.33%);
+  max-width: 33.33%;
+  background: #f9f9f9;
+}
+
+.blog-posts a.post:nth-child(3),
+.blog-posts a.post:nth-child(4),
+.blog-posts a.post:nth-child(11),
+.blog-posts a.post:nth-child(12) {
+  flex: 0 0 50%;
+  flex-basis: calc(50%);
+  max-width: 50%;
+}
+
+@media only screen and (max-width: 640px) {
+  .post.col-lg-3,
+  .post.col-lg-4,
+  .right-post.col-lg-3 {
+    flex: 0 0 50% !important;
+    flex-basis: calc(50%) !important;
+    max-width: 50% !important;
+    background: unset !important;
+  }
+  .blog-posts a.post:nth-child(1) .title {
+    font-size: 1.1em;
+  }
+  .blog-posts a.post:nth-child(1) .description {
+    display: block;
+  }
+}
+
+@media (max-width: 425px) {
+  .post.col-lg-4 {
+    flex: 100% !important;
+    max-width: 100% !important;
+    background: unset !important;
+  }
+}
+
+.post:hover {
+  background: #f9f9f973 !important;
+}
+
+.post .title,
+.right-post h5 {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+.post .date,
+.right-post .date {
+  font-size: .9em;
+  color: #949494;
+}
+
+a.post {
+  color: #495057;
+  text-decoration: none !important;
+}
+
+.image-wrapper,
+.l-post-image {
+  background-position: center;
+  background-size: cover;
+  border-radius: 6px;
+  height: 0;
+  padding-top: 66%;
+}
+
+.image-wrapper img,
+.l-post-image img {
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  opacity: 0;
+  max-width: 100%;
+}
+
+
+//
+.changer-avatar {
+  display: none;
+  background: #ffffffa3;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.author-image:hover {
+  > .changer-avatar {
+    display: block;
+  }
+}

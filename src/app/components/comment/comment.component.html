@@ -1,0 +1,11 @@
+<div class="d-flex">
+	<div class="avatar">
+		<img [src]="data.auth.thumbnail != null ? data.auth.thumbnail : '/assets/noimage.png'"
+		     [alt]="data.auth.firstName">
+	</div>
+	<div class="ml-2 d-flex justify-content-center flex-column auth">
+		<span class="name text-uppercase">{{ data.auth.firstName }} {{ data.auth.lastName }}</span>
+		<small class="time">{{ data.createdAt | date:'EEEE, MMMM d, y' }}</small>
+	</div>
+</div>
+<div class="mt-2">{{ data.content }}</div>

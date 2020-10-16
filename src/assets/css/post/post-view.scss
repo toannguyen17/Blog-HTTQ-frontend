@@ -1,0 +1,127 @@
+
+.post-content {
+  font-size: 16px;
+}
+
+.post-content h1 {
+  font-size: 2.1rem;
+}
+
+.post-content h2.subtitle {
+  color: #797979;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.post-content .avatar img {
+  width: 60px;
+  border-radius: 50%;
+  height: 60px;
+}
+
+
+.post-content .auth .name {
+}
+
+.post-content .auth .time {
+  color: #7b7f84;
+}
+
+.comment {
+  padding: 10px;
+  background: rgb(222 226 230 / 30%);
+  border-radius: 15px;
+}
+
+.comment .avatar img {
+  width: 45px;
+  border-radius: 50%;
+  height: 45px;
+}
+
+
+.comment .auth .name {
+}
+
+.comment .auth .time {
+  color: #7b7f84;
+}
+
+
+.tags {
+  font-size: 13px;
+
+  .tag-item {
+    background: #ddd;
+    text-decoration: none;
+    border-radius: 13px;
+    margin-left: 5px;
+    color: #000;
+    padding: 5px 8px;
+  }
+}
+
+label.lb_c {
+  font-size: 24px;
+}
+
+.add_comment {
+  button {
+    height: auto;
+    width: auto;
+  }
+}
+
+
+// Profile
+.item-post.c1 {
+  padding-left: calc(14px + 141px);
+  min-height: 106px;
+  position: relative;
+}
+
+.item-post.c1 + .item-post.c1 {
+  margin-top: 30px;
+}
+
+.item-post.c1 .title {
+  font-size: 15px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.item-post.c1 .c-time {
+  color: #797979;
+}
+
+.item-post.c1 .thumb-wrapper {
+  width: 141px;
+  height: 106px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.item-post.c1 .thumb-wrapper .thumb {
+  background-position: center;
+  background-size: cover;
+  display: block;
+  margin: 0;
+  width: 100%;
+  transition: all 0.2s;
+  border-radius: 6px;
+  height: 0px;
+  padding-top: 75%;
+}
+
+@media (min-width: 768px) {
+  .item-post.c1 {
+    padding-left: calc(22px + 204px);
+    min-height: 153px;
+  }
+
+  .item-post.c1 .thumb-wrapper {
+    width: 204px;
+    height: 153px;
+  }
+}
