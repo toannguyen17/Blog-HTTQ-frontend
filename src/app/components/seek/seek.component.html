@@ -5,7 +5,7 @@
         style="position: absolute; top: 50px; background-color: white;z-index: 999;border: #17a2b8 solid 1px;width: 100%">
         <li *ngIf="results.length <= 0">Found no item match.</li>
         <li  *ngFor="let sr of results">
-            <a [routerLink]="sr.url">
+            <a [routerLink]="sr.referenceId">
                 {{sr.type}} | {{sr.title}}
             </a>
         </li>

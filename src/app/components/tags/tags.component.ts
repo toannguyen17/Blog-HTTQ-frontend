@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router}               from '@angular/router';
 import {TagService}                           from '../../services/tag.service';
 import {PostPageable}                         from '../../models/post-pageable';
+import {Title}                                from '@angular/platform-browser';
 
 @Component({
     selector     : 'app-tags',
@@ -19,11 +20,13 @@ export class TagsComponent implements OnInit {
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private tagService: TagService
+        private tagService: TagService,
+        private title: Title
     ) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Tags - Blog HTTQ');
         let query_tag = this.activatedRoute.snapshot.queryParams.t;
         if(typeof query_tag === 'string'){
             this.tags.push(query_tag);

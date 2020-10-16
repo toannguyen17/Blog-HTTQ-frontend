@@ -16,6 +16,7 @@ import {ToastService}                       from '../../services/toast.service';
 import {CommentService}                     from '../../services/comment.service';
 import {CommentPage}                        from '../../models/commentPage';
 import {Comment}                            from '../../models/comment';
+import {Title}                              from '@angular/platform-browser';
 
 @Component({
     selector     : '.post-view',
@@ -54,7 +55,8 @@ export class PostViewComponent implements OnInit, DoCheck {
         public auth: AuthenticationService,
         private formBuilder: FormBuilder,
         private toast: ToastService,
-        private commentService: CommentService
+        private commentService: CommentService,
+        private title: Title
     ) {
     }
 
@@ -82,6 +84,7 @@ export class PostViewComponent implements OnInit, DoCheck {
                 this.err404 = false;
 
                 this.post = response.data;
+                this.title.setTitle(this.post.title + ' - Blog HTTQ' );
                 this.tags = this.post.tags;
                 if (response.data.subTitle.trim().length > 0) {
                     this.showSubTitle = true;

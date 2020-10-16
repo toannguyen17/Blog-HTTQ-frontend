@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthenticationService}                from '../../services/authentication.service';
 import {UserService}                          from '../../services/user.service';
 import {PostPageable}                         from '../../models/post-pageable';
+import {Title}                                from '@angular/platform-browser';
 
 @Component({
     selector     : 'app-profile',
@@ -17,11 +18,13 @@ export class ProfileComponent implements OnInit {
 
     constructor(
         public auth: AuthenticationService,
-        private userService: UserService
+        private userService: UserService,
+        private title: Title
     ) {
     }
 
     ngOnInit() {
+        this.title.setTitle('Profile - Blog HTTQ');
         this.search();
     }
 
