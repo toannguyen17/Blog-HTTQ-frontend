@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {UserDetail} from '../../interface/user-detail';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserDetailService} from '../../service/userdetail.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-create-user',
@@ -13,10 +14,14 @@ export class CreateUserComponent implements OnInit {
     formGroup: FormGroup;
 
     constructor(private formBuilder: FormBuilder,
-                private userDetailService: UserDetailService) {
+                private userDetailService: UserDetailService,
+                private router: Router) {
     }
 
     save() {
+        console.log(this.formGroup)
+        console.log('11')
+
         if (this.formGroup.valid) {
             // let user: UserDetail = {
             //     firstName: this.formGroup.get('firstName').value,
@@ -31,8 +36,10 @@ export class CreateUserComponent implements OnInit {
             //     enabled: this.formGroup.get('enabled').value
             // };
             // console.log(user);
+
             this.userDetailService.createUser(this.formGroup.value).subscribe(rs => {
                 alert(rs.msg);
+                this.router.navigate(['admin/users']);
             });
         }
     }
@@ -44,7 +51,7 @@ export class CreateUserComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             phone: ['', [Validators.required]],
             gender: ['Male', [Validators.required]],
-            address: ['', []],
+            address: [''],
             enabled: [''],
             accountNonExpired: [''],
             credentialsNonExpired: [''],
