@@ -24,10 +24,10 @@ const routes: Routes = [
         path        : 'admin',
         loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
     },
-    {
-        path: 'updateUser/:id',
-        component: UpdateUserComponent
-    },
+    // {
+    //     path: 'updateUser/:id',
+    //     component: UpdateUserComponent
+    // },
     //
     {
         path     : 'login',
