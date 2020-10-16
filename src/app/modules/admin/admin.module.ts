@@ -48,7 +48,16 @@ const routes: Routes = [
             path: 'app-create-user',
             component: CreateUserComponent
         }]
-    }
+    },
+    {
+        path: '',
+        component: AdminComponent,
+        children: [{
+            path: 'update-user/:id',
+            component: UpdateUserComponent
+        }]
+    },
+
 ];
 
 // @ts-ignore
