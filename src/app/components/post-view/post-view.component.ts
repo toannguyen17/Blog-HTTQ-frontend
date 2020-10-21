@@ -1,7 +1,7 @@
 import {
     Component,
-    DoCheck,
-    OnInit,
+    DoCheck, ElementRef,
+    OnInit, ViewChild,
     ViewEncapsulation
 } from '@angular/core';
 
@@ -24,6 +24,9 @@ import {Title}                              from '@angular/platform-browser';
     encapsulation: ViewEncapsulation.None
 })
 export class PostViewComponent implements OnInit, DoCheck {
+
+    @ViewChild('content')
+    content: ElementRef;
 
     post: Post;
 
@@ -70,6 +73,9 @@ export class PostViewComponent implements OnInit, DoCheck {
     ngDoCheck() {
         if (this.seo != this.activatedRoute.snapshot.params.seo) {
             this.getContent();
+        }
+        if (this.content && this.post){
+            this.content.nativeElement.innerHTML = this.post.content;
         }
     }
 

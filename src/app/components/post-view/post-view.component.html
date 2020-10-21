@@ -16,7 +16,7 @@
 				<small class="time">{{ post.createdAt | date:'EEEE, MMMM d, y' }}</small>
 			</div>
 		</div>
-		<div class="mt-4" [innerHTML]="post.content"></div>
+		<div class="mt-4" #content></div>
 		<div class="tags mt-4">
 			<a *ngFor="let tag of tags" class="tag-item" [routerLink]="['/tags']"
 			   [queryParams]="{t:tag.tag}">{{ tag.tag }}</a>

@@ -29,7 +29,10 @@ export class PostFormComponent implements OnInit, AfterViewInit {
     public seo: string;
 
     public config = {
-        mediaEmbed: {previewsInData: true},
+        mediaEmbed: {
+            previewsInData: true,
+            // providers: "youtube",
+        },
         toolbar   : ['heading', '|', 'bold', 'italic', 'link', '|', 'bulletedList', 'numberedList', '|', 'indent', 'outdent', '|', 'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|', 'undo', 'redo'],
         block     : ['heading', 'bulletedList', 'numberedList', '|', 'indent', 'outdent', '|', 'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|', 'undo', 'redo']
     };
