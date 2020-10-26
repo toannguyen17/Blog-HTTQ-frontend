@@ -35,7 +35,7 @@ export class ChangePasswordComponent implements OnInit {
             password: [''],
             newPassword: [''],
             confirmNewPassword: ['']
-        })
+        });
     }
 
     updateUser() {
@@ -52,12 +52,17 @@ export class ChangePasswordComponent implements OnInit {
     }
 
     changePassword() {
-        this.changePWRequestService.changePassword(this.formChangePW.value).subscribe(response => {
-            console.log(response);
-            this.router.navigate(['profile'])
-        });
-        console.log(this.formChangePW.value)
+        if (this.formChangePW.value.newPassword == this.formChangePW.value.confirmNewPassword) {
+            this.changePWRequestService.changePassword(this.formChangePW.value).subscribe(response => {
+                if (response.status == 0) {
+                    this.router.navigate(['profile']);
+                    alert('Đổi thành công')
+                } else {
+                    alert("Nhập sai mật khẩu")
+                }
+            });
+        } else {
+            alert('Mật khẩu mới không khớp');
+        }
     }
-
-
 }
